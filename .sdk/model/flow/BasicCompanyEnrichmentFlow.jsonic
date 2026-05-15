@@ -1,0 +1,28 @@
+# BasicCompanyEnrichmentFlow
+
+main: kit: flow: BasicCompanyEnrichmentFlow:
+{
+  entity: "company_enrichment",
+  kind: "basic",
+  name: "BasicCompanyEnrichmentFlow",
+  step: [
+    {
+      input: {
+        ref: "company_enrichment_ref01",
+        srcdatavar: "company_enrichment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-company_enrichment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCompanyEnrichmentFlow"
+}

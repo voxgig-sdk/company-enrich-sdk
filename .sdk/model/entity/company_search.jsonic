@@ -1,0 +1,139 @@
+# Entity: company_search
+
+main: kit: entity: company_search: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "company_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "domain"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "employee_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "industry"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "location"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "logo_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "company_search"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 1000
+                kind: "query"
+                name: "employee_count_max"
+                orig: "employee_count_max"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 100
+                kind: "query"
+                name: "employee_count_min"
+                orig: "employee_count_min"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "Technology"
+                kind: "query"
+                name: "industry"
+                orig: "industry"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 20
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "San Francisco"
+                kind: "query"
+                name: "location"
+                orig: "location"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "technology company"
+                kind: "query"
+                name: "query"
+                orig: "query"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/search"
+          parts: [
+            "v1"
+            "search"
+          ]
+          select: {
+            exist: [
+              "employee_count_max"
+              "employee_count_min"
+              "industry"
+              "limit"
+              "location"
+              "offset"
+              "query"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

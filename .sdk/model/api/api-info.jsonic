@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://docs.companyenrich.com"
+      }
+      description: "The Company Enrich API provides businesses with enriched, actionable insights about companies. It offers endpoints for company enrichment, search, and discovering similar companies, enabling users to make data-driven decisions and streamline their prospecting efforts."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.companyenrich.com"
+        }
+      ]
+      termsOfService: "https://docs.companyenrich.com/terms"
+      title: "Company Enrich API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

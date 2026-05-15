@@ -1,0 +1,22 @@
+# BasicCompanySearchFlow
+
+main: kit: flow: BasicCompanySearchFlow:
+{
+  entity: "company_search",
+  kind: "basic",
+  name: "BasicCompanySearchFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "company_search_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCompanySearchFlow"
+}

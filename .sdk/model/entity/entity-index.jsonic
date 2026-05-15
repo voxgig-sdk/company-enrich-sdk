@@ -1,0 +1,5 @@
+# Entity Models
+
+@"company_enrichment.jsonic"
+@"company_search.jsonic"
+@"similar.jsonic"

@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "company_enrichment": {
+      "COMPANY_ENRICHMENT00": {
+        "data": {},
+        "success": false
+      },
+      "COMPANY_ENRICHMENT01": {
+        "data": {},
+        "success": false
+      },
+      "COMPANY_ENRICHMENT02": {
+        "data": {},
+        "success": false
+      }
+    }
+  },
+  "new": {
+    "company_enrichment": {
+      "company_enrichment_ref01": {
+        "data": {},
+        "success": false
+      }
+    }
+  }
+}

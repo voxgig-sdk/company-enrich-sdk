@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "company_search": {
+      "COMPANY_SEARCH00": {
+        "company_id": "COMPANY01",
+        "domain": "s47",
+        "employee_count": "s48",
+        "industry": "s49",
+        "location": "s4a",
+        "logo_url": "s4b",
+        "name": "s4c"
+      },
+      "COMPANY_SEARCH01": {
+        "company_id": "COMPANY01",
+        "domain": "s8d",
+        "employee_count": "s8e",
+        "industry": "s8f",
+        "location": "s90",
+        "logo_url": "s91",
+        "name": "s92"
+      },
+      "COMPANY_SEARCH02": {
+        "company_id": "COMPANY01",
+        "domain": "sd3",
+        "employee_count": "sd4",
+        "industry": "sd5",
+        "location": "sd6",
+        "logo_url": "sd7",
+        "name": "sd8"
+      }
+    }
+  },
+  "new": {
+    "company_search": {
+      "company_search_ref01": {
+        "company_id": "COMPANY01",
+        "domain": "s119",
+        "employee_count": "s11a",
+        "industry": "s11b",
+        "location": "s11c",
+        "logo_url": "s11d",
+        "name": "s11e"
+      }
+    }
+  }
+}

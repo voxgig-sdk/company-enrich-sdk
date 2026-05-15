@@ -1,0 +1,77 @@
+# Entity: company_enrichment
+
+main: kit: entity: company_enrichment: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "data"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "success"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+  ]
+
+  name: "company_enrichment"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "company_id"
+                orig: "company_id"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "example.com"
+                kind: "query"
+                name: "domain"
+                orig: "domain"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "Example Inc"
+                kind: "query"
+                name: "name"
+                orig: "name"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/enrich"
+          parts: [
+            "v1"
+            "enrich"
+          ]
+          select: {
+            exist: [
+              "company_id"
+              "domain"
+              "name"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

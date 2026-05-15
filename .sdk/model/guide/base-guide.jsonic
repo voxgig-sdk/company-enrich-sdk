@@ -1,0 +1,26 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 3
+  metrics: count: method: 3
+
+  entity: company_enrichment: {
+    path: "/v1/enrich": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: company_search: {
+    path: "/v1/search": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: similar: {
+    path: "/v1/similar": {
+      op: list: method: *GET
+    }
+  }
+
+}

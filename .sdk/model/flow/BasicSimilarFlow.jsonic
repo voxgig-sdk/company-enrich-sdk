@@ -1,0 +1,22 @@
+# BasicSimilarFlow
+
+main: kit: flow: BasicSimilarFlow:
+{
+  entity: "similar",
+  kind: "basic",
+  name: "BasicSimilarFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "similar_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSimilarFlow"
+}

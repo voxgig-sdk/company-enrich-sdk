@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "similar": {
+      "SIMILAR00": {
+        "company_id": "COMPANY01",
+        "domain": "s51",
+        "employee_count": "s52",
+        "industry": "s53",
+        "location": "s54",
+        "logo_url": "s55",
+        "name": "s56",
+        "similarity_score": 87
+      },
+      "SIMILAR01": {
+        "company_id": "COMPANY01",
+        "domain": "sa1",
+        "employee_count": "sa2",
+        "industry": "sa3",
+        "location": "sa4",
+        "logo_url": "sa5",
+        "name": "sa6",
+        "similarity_score": 167
+      },
+      "SIMILAR02": {
+        "company_id": "COMPANY01",
+        "domain": "sf1",
+        "employee_count": "sf2",
+        "industry": "sf3",
+        "location": "sf4",
+        "logo_url": "sf5",
+        "name": "sf6",
+        "similarity_score": 247
+      }
+    }
+  },
+  "new": {
+    "similar": {
+      "similar_ref01": {
+        "company_id": "COMPANY01",
+        "domain": "s141",
+        "employee_count": "s142",
+        "industry": "s143",
+        "location": "s144",
+        "logo_url": "s145",
+        "name": "s146",
+        "similarity_score": 327
+      }
+    }
+  }
+}
