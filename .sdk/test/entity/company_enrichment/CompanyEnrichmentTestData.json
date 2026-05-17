@@ -3,15 +3,18 @@
     "company_enrichment": {
       "COMPANY_ENRICHMENT00": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "COMPANY_ENRICHMENT00"
       },
       "COMPANY_ENRICHMENT01": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "COMPANY_ENRICHMENT01"
       },
       "COMPANY_ENRICHMENT02": {
         "data": {},
-        "success": false
+        "success": false,
+        "id": "COMPANY_ENRICHMENT02"
       }
     }
   },

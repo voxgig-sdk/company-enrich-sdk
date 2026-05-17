@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/company-enrich-sdk"
-	"github.com/voxgig-sdk/company-enrich-sdk/core"
+	sdk "github.com/voxgig-sdk/company-enrich-sdk/go"
+	"github.com/voxgig-sdk/company-enrich-sdk/go/core"
 )
 
 func TestCompanyEnrichmentDirect(t *testing.T) {

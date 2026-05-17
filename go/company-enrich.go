@@ -1,10 +1,10 @@
 package voxgigcompanyenrichsdk
 
 import (
-	"github.com/voxgig-sdk/company-enrich-sdk/core"
-	"github.com/voxgig-sdk/company-enrich-sdk/entity"
-	"github.com/voxgig-sdk/company-enrich-sdk/feature"
-	_ "github.com/voxgig-sdk/company-enrich-sdk/utility"
+	"github.com/voxgig-sdk/company-enrich-sdk/go/core"
+	"github.com/voxgig-sdk/company-enrich-sdk/go/entity"
+	"github.com/voxgig-sdk/company-enrich-sdk/go/feature"
+	_ "github.com/voxgig-sdk/company-enrich-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
