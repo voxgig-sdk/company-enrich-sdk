@@ -113,7 +113,6 @@ function basicSetup(extra?: any) {
     'COMPANY_ENRICH_TEST_COMPANY_SEARCH_ENTID': idmap,
     'COMPANY_ENRICH_TEST_LIVE': 'FALSE',
     'COMPANY_ENRICH_TEST_EXPLAIN': 'FALSE',
-    'COMPANY_ENRICH_APIKEY': 'NONE',
   })
 
   idmap = env['COMPANY_ENRICH_TEST_COMPANY_SEARCH_ENTID']
@@ -123,7 +122,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new CompanyEnrichSDK(merge([
       {
-        apikey: env.COMPANY_ENRICH_APIKEY,
       },
       extra
     ]))

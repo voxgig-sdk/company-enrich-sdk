@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'COMPANYENRICH_TEST_COMPANY_SEARCH_ENTID': {},
     'COMPANYENRICH_TEST_LIVE': 'FALSE',
-    'COMPANYENRICH_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.COMPANYENRICH_TEST_LIVE
 
   if (live) {
     const client = new CompanyEnrichSDK({
-      apikey: env.COMPANYENRICH_APIKEY,
     })
 
     let idmap: any = env['COMPANYENRICH_TEST_COMPANY_SEARCH_ENTID']

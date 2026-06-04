@@ -63,14 +63,12 @@ function similar_direct_setup(mockres)
   local env = runner.env_override({
     ["COMPANYENRICH_TEST_SIMILAR_ENTID"] = {},
     ["COMPANYENRICH_TEST_LIVE"] = "FALSE",
-    ["COMPANYENRICH_APIKEY"] = "NONE",
   })
 
   local live = env["COMPANYENRICH_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["COMPANYENRICH_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

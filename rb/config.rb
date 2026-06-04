@@ -15,9 +15,6 @@ module CompanyEnrichConfig
       },
       "options" => {
         "base" => "https://api.companyenrich.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

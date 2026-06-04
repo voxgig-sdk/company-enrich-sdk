@@ -62,14 +62,12 @@ def similar_direct_setup(mockres)
   env = Runner.env_override({
     "COMPANYENRICH_TEST_SIMILAR_ENTID" => {},
     "COMPANYENRICH_TEST_LIVE" => "FALSE",
-    "COMPANYENRICH_APIKEY" => "NONE",
   })
 
   live = env["COMPANYENRICH_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["COMPANYENRICH_APIKEY"],
     }
     client = CompanyEnrichSDK.new(merged_opts)
     return {

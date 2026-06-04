@@ -83,7 +83,6 @@ def company_search_basic_setup(extra)
     "COMPANYENRICH_TEST_COMPANY_SEARCH_ENTID" => idmap,
     "COMPANYENRICH_TEST_LIVE" => "FALSE",
     "COMPANYENRICH_TEST_EXPLAIN" => "FALSE",
-    "COMPANYENRICH_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +94,6 @@ def company_search_basic_setup(extra)
   if env["COMPANYENRICH_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COMPANYENRICH_APIKEY"],
       },
       extra || {},
     ])

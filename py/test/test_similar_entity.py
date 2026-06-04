@@ -92,7 +92,6 @@ def _similar_basic_setup(extra):
         "COMPANYENRICH_TEST_SIMILAR_ENTID": idmap,
         "COMPANYENRICH_TEST_LIVE": "FALSE",
         "COMPANYENRICH_TEST_EXPLAIN": "FALSE",
-        "COMPANYENRICH_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _similar_basic_setup(extra):
     if env.get("COMPANYENRICH_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COMPANYENRICH_APIKEY"),
             },
             extra or {},
         ])
