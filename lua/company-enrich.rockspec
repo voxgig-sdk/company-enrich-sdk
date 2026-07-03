@@ -8,12 +8,14 @@ source = {
   dir = "company-enrich-sdk/lua"
 }
 description = {
-  summary = "CompanyEnrich SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Company Enrich public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/company-enrich-sdk",
+  issues_url = "https://github.com/voxgig-sdk/company-enrich-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "company-enrich" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

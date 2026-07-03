@@ -10,7 +10,7 @@ The Python SDK for the CompanyEnrich API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install company-enrich-sdk
+pip install voxgig-sdk-company-enrich
 ```
 
 Or install from source:

@@ -10,7 +10,7 @@ The TypeScript SDK for the CompanyEnrich API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install company-enrich
+npm install @voxgig-sdk/company-enrich
 ```
 ## Tutorial: your first API call
 

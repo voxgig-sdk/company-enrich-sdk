@@ -10,7 +10,7 @@ The PHP SDK for the CompanyEnrich API — an entity-oriented client using PHP co
 
 ## Install
 ```bash
-composer require voxgig/company-enrich-sdk
+composer require voxgig-sdk/company-enrich
 ```
 
 

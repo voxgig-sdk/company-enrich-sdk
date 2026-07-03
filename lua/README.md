@@ -10,7 +10,7 @@ The Lua SDK for the CompanyEnrich API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install company-enrich-sdk
+luarocks install voxgig-sdk-company-enrich
 ```
 
 If the module is not yet published, add the source directory to

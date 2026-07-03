@@ -1,7 +1,23 @@
 {
   "name": "@voxgig-sdk/company-enrich",
   "version": "0.0.1",
-  "description": "DESCRIPTION",
+  "description": "Unofficial generated TypeScript SDK for the Company Enrich public API. Not affiliated with or endorsed by the upstream API provider.",
+  "keywords": [
+    "voxgig",
+    "sdk",
+    "generated-sdk",
+    "openapi",
+    "api-client",
+    "company-enrich"
+  ],
+  "homepage": "https://github.com/voxgig-sdk/company-enrich-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voxgig-sdk/company-enrich-sdk.git"
+  },
+  "bugs": {
+    "url": "https://github.com/voxgig-sdk/company-enrich-sdk/issues"
+  },
   "main": "dist/CompanyEnrichSDK.js",
   "type": "commonjs",
   "types": "dist/CompanyEnrichSDK.d.ts",
@@ -14,7 +30,10 @@
     "clean": "rm -rf node_modules yarn.lock package-lock.json",
     "reset": "npm run clean && npm i && npm run build && npm test"
   },
-  "author": "CompanyEnrich",
+  "author": {
+    "name": "Voxgig",
+    "url": "https://voxgig.com"
+  },
   "license": "MIT",
   "dependencies": {},
   "peerDependencies": {},

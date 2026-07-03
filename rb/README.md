@@ -10,13 +10,13 @@ The Ruby SDK for the CompanyEnrich API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install company-enrich-sdk
+gem install voxgig-sdk-company-enrich
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "company-enrich-sdk"
+gem "voxgig-sdk-company-enrich"
 ```
 
 Then run:
