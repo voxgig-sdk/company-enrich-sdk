@@ -62,12 +62,14 @@ def company_search_direct_setup(mockres)
   env = Runner.env_override({
     "COMPANYENRICH_TEST_COMPANY_SEARCH_ENTID" => {},
     "COMPANYENRICH_TEST_LIVE" => "FALSE",
+    "COMPANYENRICH_APIKEY" => "NONE",
   })
 
   live = env["COMPANYENRICH_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["COMPANYENRICH_APIKEY"],
     }
     client = CompanyEnrichSDK.new(merged_opts)
     return {

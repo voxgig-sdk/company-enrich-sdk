@@ -93,12 +93,14 @@ func company_searchDirectSetup(mockres any) *company_searchDirectSetupResult {
 	env := envOverride(map[string]any{
 		"COMPANYENRICH_TEST_COMPANY_SEARCH_ENTID": map[string]any{},
 		"COMPANYENRICH_TEST_LIVE":    "FALSE",
+		"COMPANYENRICH_APIKEY":       "NONE",
 	})
 
 	live := env["COMPANYENRICH_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["COMPANYENRICH_APIKEY"],
 		}
 		client := sdk.NewCompanyEnrichSDK(mergedOpts)
 

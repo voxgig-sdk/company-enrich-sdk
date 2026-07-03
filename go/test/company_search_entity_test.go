@@ -119,6 +119,7 @@ func company_searchBasicSetup(extra map[string]any) *entityTestSetup {
 		"COMPANYENRICH_TEST_COMPANY_SEARCH_ENTID": idmap,
 		"COMPANYENRICH_TEST_LIVE":      "FALSE",
 		"COMPANYENRICH_TEST_EXPLAIN":   "FALSE",
+		"COMPANYENRICH_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["COMPANYENRICH_TEST_COMPANY_SEARCH_ENTID"])
@@ -129,6 +130,7 @@ func company_searchBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["COMPANYENRICH_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["COMPANYENRICH_APIKEY"],
 			},
 			extra,
 		})

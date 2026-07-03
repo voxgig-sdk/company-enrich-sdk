@@ -91,6 +91,7 @@ function company_enrichment_basic_setup(extra)
     ["COMPANYENRICH_TEST_COMPANY_ENRICHMENT_ENTID"] = idmap,
     ["COMPANYENRICH_TEST_LIVE"] = "FALSE",
     ["COMPANYENRICH_TEST_EXPLAIN"] = "FALSE",
+    ["COMPANYENRICH_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function company_enrichment_basic_setup(extra)
   if env["COMPANYENRICH_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["COMPANYENRICH_APIKEY"],
       },
       extra or {},
     })

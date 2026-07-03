@@ -1,19 +1,8 @@
 # CompanyEnrich SDK
 
-Enrich, search, and find lookalike companies from a domain, name, or social URL
+Company Enrich API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Company Enrich API
-
-The Company Enrich API is a B2B data service operated by [CompanyEnrich](https://companyenrich.com) that returns company profiles, search results, and lookalike-account suggestions over a REST interface served at `https://api.companyenrich.com`.
-
-What you get from the API:
-- Company enrichment from a domain, name, or social URL
-- Company search across a large index of companies using filters
-- Similar-company discovery for finding lookalike accounts
-
-Access is token-based: requests carry an API token, and the vendor publishes OpenAPI and rate-limit/credits guides at [docs.companyenrich.com](https://docs.companyenrich.com). Community sources have at times reported the public endpoint as intermittent, so check the docs for the current base URL and quota policy before integrating.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install company-enrich-sdk
 luarocks install company-enrich-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { CompanyEnrichSDK } from 'company-enrich'
 
-const client = new CompanyEnrichSDK({})
+const client = new CompanyEnrichSDK({
+  apikey: process.env.COMPANY-ENRICH_APIKEY,
+})
 
+// Load companyenrichment data
+const companyenrichment = await client.CompanyEnrichment().load({})
+console.log(companyenrichment.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **CompanyEnrichment** | Company profile lookup that resolves a domain, company name, or social URL to an enriched company record. | `/v1/enrich` |
-| **CompanySearch** | Filtered search across CompanyEnrich's company index, used to retrieve companies matching attribute criteria. | `/v1/search` |
-| **Similar** | Lookalike / similar-company discovery that returns companies ranked as comparable to a given company. | `/v1/similar` |
+| **CompanyEnrichment** |  | `/v1/enrich` |
+| **CompanySearch** |  | `/v1/search` |
+| **Similar** |  | `/v1/similar` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -109,15 +102,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from companyenrich_sdk import CompanyEnrichSDK
 
-client = CompanyEnrichSDK({})
+client = CompanyEnrichSDK({
+    "apikey": os.environ.get("COMPANY-ENRICH_APIKEY"),
+})
 
 
 # Load a specific companyenrichment
-companyenrichment, err = client.CompanyEnrichment(None).load(
-    {"id": "example_id"}, None
-)
+companyenrichment, err = client.CompanyEnrichment().load({"id": "example_id"})
+print(companyenrichment)
 ```
 
 ### PHP
@@ -126,13 +121,14 @@ companyenrichment, err = client.CompanyEnrichment(None).load(
 <?php
 require_once 'companyenrich_sdk.php';
 
-$client = new CompanyEnrichSDK([]);
+$client = new CompanyEnrichSDK([
+    "apikey" => getenv("COMPANY-ENRICH_APIKEY"),
+]);
 
 
 // Load a specific companyenrichment
-[$companyenrichment, $err] = $client->CompanyEnrichment(null)->load(
-    ["id" => "example_id"], null
-);
+[$companyenrichment, $err] = $client->CompanyEnrichment()->load(["id" => "example_id"]);
+print_r($companyenrichment);
 ```
 
 ### Golang
@@ -140,8 +136,13 @@ $client = new CompanyEnrichSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/company-enrich-sdk/go"
 
-client := sdk.NewCompanyEnrichSDK(map[string]any{})
+client := sdk.NewCompanyEnrichSDK(map[string]any{
+    "apikey": os.Getenv("COMPANY-ENRICH_APIKEY"),
+})
 
+// Load companyenrichment data
+companyenrichment, err := client.CompanyEnrichment(nil).Load(map[string]any{}, nil)
+fmt.Println(companyenrichment)
 ```
 
 ### Ruby
@@ -149,13 +150,14 @@ client := sdk.NewCompanyEnrichSDK(map[string]any{})
 ```ruby
 require_relative "CompanyEnrich_sdk"
 
-client = CompanyEnrichSDK.new({})
+client = CompanyEnrichSDK.new({
+  "apikey" => ENV["COMPANY-ENRICH_APIKEY"],
+})
 
 
 # Load a specific companyenrichment
-companyenrichment, err = client.CompanyEnrichment(nil).load(
-  { "id" => "example_id" }, nil
-)
+companyenrichment, err = client.CompanyEnrichment().load({ "id" => "example_id" })
+puts companyenrichment
 ```
 
 ### Lua
@@ -163,13 +165,14 @@ companyenrichment, err = client.CompanyEnrichment(nil).load(
 ```lua
 local sdk = require("company-enrich_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("COMPANY-ENRICH_APIKEY"),
+})
 
 
 -- Load a specific companyenrichment
-local companyenrichment, err = client:CompanyEnrichment(nil):load(
-  { id = "example_id" }, nil
-)
+local companyenrichment, err = client:CompanyEnrichment():load({ id = "example_id" })
+print(companyenrichment)
 ```
 
 ## Unit testing in offline mode
@@ -188,25 +191,21 @@ const result = await client.CompanyEnrichment().load({ id: 'test01' })
 ### Python
 
 ```python
-client = CompanyEnrichSDK.test(None, None)
-result, err = client.CompanyEnrichment(None).load(
-    {"id": "test01"}, None
-)
+client = CompanyEnrichSDK.test()
+result, err = client.CompanyEnrichment().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = CompanyEnrichSDK::test(null, null);
-[$result, $err] = $client->CompanyEnrichment(null)->load(
-    ["id" => "test01"], null
-);
+$client = CompanyEnrichSDK::test();
+[$result, $err] = $client->CompanyEnrichment()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.CompanyEnrichment(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -215,19 +214,15 @@ result, err := client.CompanyEnrichment(nil).Load(
 ### Ruby
 
 ```ruby
-client = CompanyEnrichSDK.test(nil, nil)
-result, err = client.CompanyEnrichment(nil).load(
-  { "id" => "test01" }, nil
-)
+client = CompanyEnrichSDK.test
+result, err = client.CompanyEnrichment().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:CompanyEnrichment(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:CompanyEnrichment():load({ id = "test01" })
 ```
 
 ## How it works
@@ -331,16 +326,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Company Enrich API
-
-- Upstream: [https://companyenrich.com](https://companyenrich.com)
-- API docs: [https://docs.companyenrich.com](https://docs.companyenrich.com)
-
-- Proprietary, vendor-operated API; no open-source licence applies to the data.
-- Access requires a CompanyEnrich account and an API token.
-- Usage, redistribution, and storage of returned company data are subject to CompanyEnrich's terms of service.
-- Consult the official docs for the current rate limits and credit policy.
 
 ---
 
