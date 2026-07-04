@@ -233,10 +233,10 @@ class CompanyEnrichSDK
 
     private $_company_enrichment = null;
 
-    // Idiomatic facade: $client->company_enrichment()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CompanyEnrichment() (PHP method
-    // names are case-insensitive).
-    public function company_enrichment($data = null)
+    // Canonical facade: $client->CompanyEnrichment()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->company_enrichment()
+    // resolves here too.
+    public function CompanyEnrichment($data = null)
     {
         require_once __DIR__ . '/entity/company_enrichment_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class CompanyEnrichSDK
 
     private $_company_search = null;
 
-    // Idiomatic facade: $client->company_search()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias CompanySearch() (PHP method
-    // names are case-insensitive).
-    public function company_search($data = null)
+    // Canonical facade: $client->CompanySearch()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->company_search()
+    // resolves here too.
+    public function CompanySearch($data = null)
     {
         require_once __DIR__ . '/entity/company_search_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class CompanyEnrichSDK
 
     private $_similar = null;
 
-    // Idiomatic facade: $client->similar()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Similar() (PHP method
-    // names are case-insensitive).
-    public function similar($data = null)
+    // Canonical facade: $client->Similar()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->similar()
+    // resolves here too.
+    public function Similar($data = null)
     {
         require_once __DIR__ . '/entity/similar_entity.php';
         if ($data === null) {

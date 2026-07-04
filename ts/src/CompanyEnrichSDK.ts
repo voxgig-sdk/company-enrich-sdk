@@ -206,42 +206,21 @@ class CompanyEnrichSDK {
 
 
 
-  _company_enrichment?: CompanyEnrichmentEntity
-
-  // Idiomatic facade: `client.company_enrichment.list()` / `client.company_enrichment.load({ id })`.
-  get company_enrichment(): CompanyEnrichmentEntity {
-    return (this._company_enrichment ??= new CompanyEnrichmentEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.company_enrichment` instead. */
+  // Entity access: `client.CompanyEnrichment().list()` / `client.CompanyEnrichment().load({ id })`.
   CompanyEnrichment(data?: any) {
     const self = this
     return new CompanyEnrichmentEntity(self,data)
   }
 
 
-  _company_search?: CompanySearchEntity
-
-  // Idiomatic facade: `client.company_search.list()` / `client.company_search.load({ id })`.
-  get company_search(): CompanySearchEntity {
-    return (this._company_search ??= new CompanySearchEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.company_search` instead. */
+  // Entity access: `client.CompanySearch().list()` / `client.CompanySearch().load({ id })`.
   CompanySearch(data?: any) {
     const self = this
     return new CompanySearchEntity(self,data)
   }
 
 
-  _similar?: SimilarEntity
-
-  // Idiomatic facade: `client.similar.list()` / `client.similar.load({ id })`.
-  get similar(): SimilarEntity {
-    return (this._similar ??= new SimilarEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.similar` instead. */
+  // Entity access: `client.Similar().list()` / `client.Similar().load({ id })`.
   Similar(data?: any) {
     const self = this
     return new SimilarEntity(self,data)

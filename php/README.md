@@ -35,9 +35,10 @@ $client = new CompanyEnrichSDK([
 
 ```php
 try {
-    $result = $client->companyenrichment()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare CompanyEnrichment record (throws on error).
+    $companyenrichment = $client->CompanyEnrichment()->load(["id" => "example_id"]);
+    print_r($companyenrichment);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -83,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = CompanyEnrichSDK::test();
+$client = CompanyEnrichSDK::test([
+    "entity" => ["companyenrichment" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->companyenrichment()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$companyenrichment = $client->CompanyEnrichment()->load(["id" => "test01"]);
+print_r($companyenrichment);
 ```
 
 ### Use a custom fetch function
@@ -263,7 +268,7 @@ API path: `/v1/similar`
 
 ### CompanyEnrichment
 
-Create an instance: `const company_enrichment = client.company_enrichment`
+Create an instance: `$company_enrichment = $client->CompanyEnrichment();`
 
 #### Operations
 
@@ -280,14 +285,15 @@ Create an instance: `const company_enrichment = client.company_enrichment`
 
 #### Example: Load
 
-```ts
-const company_enrichment = await client.company_enrichment.load({ id: 'company_enrichment_id' })
+```php
+// load() returns the bare CompanyEnrichment record (throws on error).
+$company_enrichment = $client->CompanyEnrichment()->load(["id" => "company_enrichment_id"]);
 ```
 
 
 ### CompanySearch
 
-Create an instance: `const company_search = client.company_search`
+Create an instance: `$company_search = $client->CompanySearch();`
 
 #### Operations
 
@@ -309,14 +315,15 @@ Create an instance: `const company_search = client.company_search`
 
 #### Example: List
 
-```ts
-const company_searchs = await client.company_search.list()
+```php
+// list() returns an array of CompanySearch records (throws on error).
+$company_searchs = $client->CompanySearch()->list();
 ```
 
 
 ### Similar
 
-Create an instance: `const similar = client.similar`
+Create an instance: `$similar = $client->Similar();`
 
 #### Operations
 
@@ -339,8 +346,9 @@ Create an instance: `const similar = client.similar`
 
 #### Example: List
 
-```ts
-const similars = await client.similar.list()
+```php
+// list() returns an array of Similar records (throws on error).
+$similars = $client->Similar()->list();
 ```
 
 
@@ -415,7 +423,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$companyenrichment = $client->companyenrichment();
+$companyenrichment = $client->CompanyEnrichment();
 $companyenrichment->load(["id" => "example_id"]);
 
 // $companyenrichment->dataGet() now returns the loaded companyenrichment data

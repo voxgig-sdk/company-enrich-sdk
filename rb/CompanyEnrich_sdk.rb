@@ -208,39 +208,21 @@ class CompanyEnrichSDK
   end
 
 
-  # Idiomatic facade: client.company_enrichment.list / client.company_enrichment.load({ "id" => ... })
-  def company_enrichment
-    require_relative 'entity/company_enrichment_entity'
-    @company_enrichment ||= CompanyEnrichmentEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.company_enrichment instead.
+  # Canonical facade: client.CompanyEnrichment.list / client.CompanyEnrichment.load({ "id" => ... })
   def CompanyEnrichment(data = nil)
     require_relative 'entity/company_enrichment_entity'
     CompanyEnrichmentEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.company_search.list / client.company_search.load({ "id" => ... })
-  def company_search
-    require_relative 'entity/company_search_entity'
-    @company_search ||= CompanySearchEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.company_search instead.
+  # Canonical facade: client.CompanySearch.list / client.CompanySearch.load({ "id" => ... })
   def CompanySearch(data = nil)
     require_relative 'entity/company_search_entity'
     CompanySearchEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.similar.list / client.similar.load({ "id" => ... })
-  def similar
-    require_relative 'entity/similar_entity'
-    @similar ||= SimilarEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.similar instead.
+  # Canonical facade: client.Similar.list / client.Similar.load({ "id" => ... })
   def Similar(data = nil)
     require_relative 'entity/similar_entity'
     SimilarEntity.new(self, data)

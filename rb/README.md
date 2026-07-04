@@ -34,8 +34,9 @@ client = CompanyEnrichSDK.new({
 
 ```ruby
 begin
-  result = client.companyenrichment.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare CompanyEnrichment record (raises on error).
+  companyenrichment = client.CompanyEnrichment.load({ "id" => "example_id" })
+  puts companyenrichment
 rescue => err
   warn "load failed: #{err}"
 end
@@ -82,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = CompanyEnrichSDK.test
+client = CompanyEnrichSDK.test({
+  "entity" => { "companyenrichment" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.companyenrichment.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+companyenrichment = client.CompanyEnrichment.load({ "id" => "test01" })
+puts companyenrichment
 ```
 
 ### Use a custom fetch function
@@ -258,7 +263,7 @@ API path: `/v1/similar`
 
 ### CompanyEnrichment
 
-Create an instance: `const company_enrichment = client.company_enrichment`
+Create an instance: `company_enrichment = client.CompanyEnrichment`
 
 #### Operations
 
@@ -275,14 +280,15 @@ Create an instance: `const company_enrichment = client.company_enrichment`
 
 #### Example: Load
 
-```ts
-const company_enrichment = await client.company_enrichment.load({ id: 'company_enrichment_id' })
+```ruby
+# load returns the bare CompanyEnrichment record (raises on error).
+company_enrichment = client.CompanyEnrichment.load({ "id" => "company_enrichment_id" })
 ```
 
 
 ### CompanySearch
 
-Create an instance: `const company_search = client.company_search`
+Create an instance: `company_search = client.CompanySearch`
 
 #### Operations
 
@@ -304,14 +310,15 @@ Create an instance: `const company_search = client.company_search`
 
 #### Example: List
 
-```ts
-const company_searchs = await client.company_search.list()
+```ruby
+# list returns an Array of CompanySearch records (raises on error).
+company_searchs = client.CompanySearch.list
 ```
 
 
 ### Similar
 
-Create an instance: `const similar = client.similar`
+Create an instance: `similar = client.Similar`
 
 #### Operations
 
@@ -334,8 +341,9 @@ Create an instance: `const similar = client.similar`
 
 #### Example: List
 
-```ts
-const similars = await client.similar.list()
+```ruby
+# list returns an Array of Similar records (raises on error).
+similars = client.Similar.list
 ```
 
 
@@ -410,7 +418,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-companyenrichment = client.companyenrichment
+companyenrichment = client.CompanyEnrichment
 companyenrichment.load({ "id" => "example_id" })
 
 # companyenrichment.data_get now returns the loaded companyenrichment data

@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:company_enrichment():list() / client:company_enrichment():load({ id = ... })
-function CompanyEnrichSDK:company_enrichment(data)
+-- Idiomatic facade: client:CompanyEnrichment():list() / client:CompanyEnrichment():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CompanyEnrichSDK:CompanyEnrichment(data)
   local EntityMod = require("entity.company_enrichment_entity")
   if data == nil then
     if self._company_enrichment == nil then
@@ -256,15 +257,10 @@ function CompanyEnrichSDK:company_enrichment(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:company_enrichment() instead.
-function CompanyEnrichSDK:CompanyEnrichment(data)
-  local EntityMod = require("entity.company_enrichment_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:company_search():list() / client:company_search():load({ id = ... })
-function CompanyEnrichSDK:company_search(data)
+-- Idiomatic facade: client:CompanySearch():list() / client:CompanySearch():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CompanyEnrichSDK:CompanySearch(data)
   local EntityMod = require("entity.company_search_entity")
   if data == nil then
     if self._company_search == nil then
@@ -275,15 +271,10 @@ function CompanyEnrichSDK:company_search(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:company_search() instead.
-function CompanyEnrichSDK:CompanySearch(data)
-  local EntityMod = require("entity.company_search_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:similar():list() / client:similar():load({ id = ... })
-function CompanyEnrichSDK:similar(data)
+-- Idiomatic facade: client:Similar():list() / client:Similar():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CompanyEnrichSDK:Similar(data)
   local EntityMod = require("entity.similar_entity")
   if data == nil then
     if self._similar == nil then
@@ -291,12 +282,6 @@ function CompanyEnrichSDK:similar(data)
     end
     return self._similar
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:similar() instead.
-function CompanyEnrichSDK:Similar(data)
-  local EntityMod = require("entity.similar_entity")
   return EntityMod.new(self, data)
 end
 

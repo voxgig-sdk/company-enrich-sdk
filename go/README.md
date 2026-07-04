@@ -30,7 +30,12 @@ go mod edit -replace github.com/voxgig-sdk/company-enrich-sdk/go=../company-enri
 This tutorial walks through creating a client, listing entities, and
 loading a specific record.
 
-### 1. Create a client
+### Quickstart
+
+A complete program: create a client, then call the entity operations.
+Each operation returns `(value, error)` — the value is the data itself
+(there is no `{ok, data}` wrapper), so check `err` and use the value
+directly.
 
 ```go
 package main
@@ -38,31 +43,20 @@ package main
 import (
     "fmt"
     "os"
-
     sdk "github.com/voxgig-sdk/company-enrich-sdk/go"
-    "github.com/voxgig-sdk/company-enrich-sdk/go/core"
 )
 
 func main() {
     client := sdk.NewCompanyEnrichSDK(map[string]any{
         "apikey": os.Getenv("COMPANY_ENRICH_APIKEY"),
     })
-```
 
-### 3. Load a companyenrichment
-
-```go
-    result, err = client.CompanyEnrichment(nil).Load(
-        map[string]any{"id": "example_id"}, nil,
-    )
+    // Load a single companyenrichment — the value is the loaded record.
+    companyenrichment, err := client.CompanyEnrichment(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
-
-    rm = core.ToMapAny(result)
-    if rm["ok"] == true {
-        fmt.Println(rm["data"])
-    }
+    fmt.Println(companyenrichment)
 }
 ```
 
@@ -113,10 +107,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.CompanyEnrichment(nil).Load(
+companyenrichment, err := client.CompanyEnrichment(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
-// result contains mock response data
+if err != nil {
+    panic(err)
+}
+fmt.Println(companyenrichment) // the loaded mock data
 ```
 
 ### Use a custom fetch function
@@ -217,17 +214,24 @@ All entities implement the `CompanyEnrichEntity` interface.
 
 ### Result shape
 
-Entity operations return `(any, error)`. The `any` value is a
-`map[string]any` with these keys:
+Entity operations return `(value, error)`. The `value` is the
+operation's data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `"ok"` | `bool` | `true` if the HTTP status is 2xx. |
-| `"status"` | `int` | HTTP status code. |
-| `"headers"` | `map[string]any` | Response headers. |
-| `"data"` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
+| `List` | a `[]any` of entity records |
 
-On error, `"ok"` is `false` and `"err"` contains the error value.
+Check `err` first, then use the value directly (or the typed
+`...Typed` variants, which return the entity's model struct and a typed
+slice):
+
+    companyenrichment, err := client.CompanyEnrichment(nil).Load(map[string]any{"id": "example_id"}, nil)
+    if err != nil { /* handle */ }
+    // companyenrichment is the loaded record
+
+Only `Direct()` returns a response envelope — a `map[string]any` with
+`"ok"`, `"status"`, `"headers"`, and `"data"` keys.
 
 ### Entities
 
@@ -300,7 +304,11 @@ Create an instance: `company_enrichment := client.CompanyEnrichment(nil)`
 #### Example: Load
 
 ```go
-result, err := client.CompanyEnrichment(nil).Load(map[string]any{"id": "company_enrichment_id"}, nil)
+company_enrichment, err := client.CompanyEnrichment(nil).Load(map[string]any{"id": "company_enrichment_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(company_enrichment) // the loaded record
 ```
 
 
@@ -329,7 +337,11 @@ Create an instance: `company_search := client.CompanySearch(nil)`
 #### Example: List
 
 ```go
-results, err := client.CompanySearch(nil).List(nil, nil)
+company_searchs, err := client.CompanySearch(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(company_searchs) // the array of records
 ```
 
 
@@ -359,7 +371,11 @@ Create an instance: `similar := client.Similar(nil)`
 #### Example: List
 
 ```go
-results, err := client.Similar(nil).List(nil, nil)
+similars, err := client.Similar(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(similars) // the array of records
 ```
 
 

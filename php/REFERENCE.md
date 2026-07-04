@@ -94,7 +94,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CompanyEnrichmentEntity
 
 ```php
-$company_enrichment = $client->company_enrichment();
+$company_enrichment = $client->CompanyEnrichment();
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ $company_enrichment = $client->company_enrichment();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->company_enrichment()->load(["id" => "company_enrichment_id"]);
+$result = $client->CompanyEnrichment()->load(["id" => "company_enrichment_id"]);
 ```
 
 ### Common Methods
@@ -147,7 +147,7 @@ Return the entity name.
 ## CompanySearchEntity
 
 ```php
-$company_search = $client->company_search();
+$company_search = $client->CompanySearch();
 ```
 
 ### Fields
@@ -169,7 +169,7 @@ $company_search = $client->company_search();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->company_search()->list([]);
+$results = $client->CompanySearch()->list([]);
 ```
 
 ### Common Methods
@@ -205,7 +205,7 @@ Return the entity name.
 ## SimilarEntity
 
 ```php
-$similar = $client->similar();
+$similar = $client->Similar();
 ```
 
 ### Fields
@@ -228,7 +228,7 @@ $similar = $client->similar();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->similar()->list([]);
+$results = $client->Similar()->list([]);
 ```
 
 ### Common Methods

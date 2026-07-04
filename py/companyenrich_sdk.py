@@ -220,57 +220,27 @@ class CompanyEnrichSDK:
         }
 
 
-    @property
-    def company_enrichment(self):
-        """Idiomatic facade: client.company_enrichment.list() / client.company_enrichment.load({"id": ...})."""
-        from entity.company_enrichment_entity import CompanyEnrichmentEntity
-        cached = getattr(self, "_company_enrichment", None)
-        if cached is None:
-            cached = CompanyEnrichmentEntity(self, None)
-            self._company_enrichment = cached
-        return cached
-
-    def CompanyEnrichment(self, data=None):
-        # Deprecated: use client.company_enrichment instead.
+    def CompanyEnrichment(self, data=None) -> "CompanyEnrichmentEntity":
+        """Entity factory: client.CompanyEnrichment().list({}) / client.CompanyEnrichment().load({"id": ...})."""
         from entity.company_enrichment_entity import CompanyEnrichmentEntity
         return CompanyEnrichmentEntity(self, data)
 
 
-    @property
-    def company_search(self):
-        """Idiomatic facade: client.company_search.list() / client.company_search.load({"id": ...})."""
-        from entity.company_search_entity import CompanySearchEntity
-        cached = getattr(self, "_company_search", None)
-        if cached is None:
-            cached = CompanySearchEntity(self, None)
-            self._company_search = cached
-        return cached
-
-    def CompanySearch(self, data=None):
-        # Deprecated: use client.company_search instead.
+    def CompanySearch(self, data=None) -> "CompanySearchEntity":
+        """Entity factory: client.CompanySearch().list({}) / client.CompanySearch().load({"id": ...})."""
         from entity.company_search_entity import CompanySearchEntity
         return CompanySearchEntity(self, data)
 
 
-    @property
-    def similar(self):
-        """Idiomatic facade: client.similar.list() / client.similar.load({"id": ...})."""
-        from entity.similar_entity import SimilarEntity
-        cached = getattr(self, "_similar", None)
-        if cached is None:
-            cached = SimilarEntity(self, None)
-            self._similar = cached
-        return cached
-
-    def Similar(self, data=None):
-        # Deprecated: use client.similar instead.
+    def Similar(self, data=None) -> "SimilarEntity":
+        """Entity factory: client.Similar().list({}) / client.Similar().load({"id": ...})."""
         from entity.similar_entity import SimilarEntity
         return SimilarEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "CompanyEnrichSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class CompanyEnrichSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.company_enrichment_entity import CompanyEnrichmentEntity
+    from entity.company_search_entity import CompanySearchEntity
+    from entity.similar_entity import SimilarEntity

@@ -92,7 +92,7 @@ same parameters as `direct()`.
 ## CompanyEnrichmentEntity
 
 ```lua
-local company_enrichment = client:company_enrichment(nil)
+local company_enrichment = client:CompanyEnrichment(nil)
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ local company_enrichment = client:company_enrichment(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:company_enrichment():load({ id = "company_enrichment_id" })
+local result, err = client:CompanyEnrichment():load({ id = "company_enrichment_id" })
 ```
 
 ### Common Methods
@@ -145,7 +145,7 @@ Return the entity name.
 ## CompanySearchEntity
 
 ```lua
-local company_search = client:company_search(nil)
+local company_search = client:CompanySearch(nil)
 ```
 
 ### Fields
@@ -167,7 +167,7 @@ local company_search = client:company_search(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:company_search():list()
+local results, err = client:CompanySearch():list()
 ```
 
 ### Common Methods
@@ -203,7 +203,7 @@ Return the entity name.
 ## SimilarEntity
 
 ```lua
-local similar = client:similar(nil)
+local similar = client:Similar(nil)
 ```
 
 ### Fields
@@ -226,7 +226,7 @@ local similar = client:similar(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:similar():list()
+local results, err = client:Similar():list()
 ```
 
 ### Common Methods

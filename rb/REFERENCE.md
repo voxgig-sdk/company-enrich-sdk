@@ -95,7 +95,7 @@ same parameters as `direct()`. Raises on error.
 ## CompanyEnrichmentEntity
 
 ```ruby
-company_enrichment = client.company_enrichment
+company_enrichment = client.CompanyEnrichment
 ```
 
 ### Fields
@@ -112,7 +112,7 @@ company_enrichment = client.company_enrichment
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.company_enrichment.load({ "id" => "company_enrichment_id" })
+result = client.CompanyEnrichment.load({ "id" => "company_enrichment_id" })
 ```
 
 ### Common Methods
@@ -148,7 +148,7 @@ Return the entity name.
 ## CompanySearchEntity
 
 ```ruby
-company_search = client.company_search
+company_search = client.CompanySearch
 ```
 
 ### Fields
@@ -170,7 +170,7 @@ company_search = client.company_search
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.company_search.list(nil)
+results = client.CompanySearch.list(nil)
 ```
 
 ### Common Methods
@@ -206,7 +206,7 @@ Return the entity name.
 ## SimilarEntity
 
 ```ruby
-similar = client.similar
+similar = client.Similar
 ```
 
 ### Fields
@@ -229,7 +229,7 @@ similar = client.similar
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.similar.list(nil)
+results = client.Similar.list(nil)
 ```
 
 ### Common Methods

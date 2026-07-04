@@ -28,9 +28,9 @@ const client = new CompanyEnrichSDK({
   apikey: process.env.COMPANY_ENRICH_APIKEY,
 })
 
-// Load companyenrichment data
-const companyenrichment = await client.companyenrichment.load({})
-console.log(companyenrichment.data)
+// Load companyenrichment data (returns a CompanyEnrichment)
+const companyenrichment = await client.CompanyEnrichment().load()
+console.log(companyenrichment)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -91,8 +91,8 @@ client = CompanyEnrichSDK({
 })
 
 
-# Load a specific companyenrichment
-companyenrichment = client.companyenrichment.load({"id": "example_id"})
+# Load a specific companyenrichment (returns the record, raises on error)
+companyenrichment = client.CompanyEnrichment().load({"id": "example_id"})
 print(companyenrichment)
 ```
 
@@ -107,8 +107,8 @@ $client = new CompanyEnrichSDK([
 ]);
 
 
-// Load a specific companyenrichment
-$companyenrichment = $client->companyenrichment()->load(["id" => "example_id"]);
+// Load a specific companyenrichment (returns the bare record; throws on error)
+$companyenrichment = $client->CompanyEnrichment()->load(["id" => "example_id"]);
 print_r($companyenrichment);
 ```
 
@@ -136,8 +136,8 @@ client = CompanyEnrichSDK.new({
 })
 
 
-# Load a specific companyenrichment
-companyenrichment = client.companyenrichment.load({ "id" => "example_id" })
+# Load a specific companyenrichment (returns the bare record; raises on error)
+companyenrichment = client.CompanyEnrichment.load({ "id" => "example_id" })
 puts companyenrichment
 ```
 
@@ -152,7 +152,7 @@ local client = sdk.new({
 
 
 -- Load a specific companyenrichment
-local companyenrichment, err = client:companyenrichment():load({ id = "example_id" })
+local companyenrichment, err = client:CompanyEnrichment():load({ id = "example_id" })
 print(companyenrichment)
 ```
 
@@ -165,22 +165,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = CompanyEnrichSDK.test()
-const result = await client.companyenrichment.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const companyenrichment = await client.CompanyEnrichment().load({ id: 'test01' })
+// companyenrichment is a bare CompanyEnrichment populated with mock data
+console.log(companyenrichment)
 ```
 
 ### Python
 
 ```python
 client = CompanyEnrichSDK.test()
-result = client.companyenrichment.load({"id": "test01"})
+companyenrichment = client.CompanyEnrichment().load({"id": "test01"})
+print(companyenrichment)
 ```
 
 ### PHP
 
 ```php
-$client = CompanyEnrichSDK::test();
-$result = $client->companyenrichment()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = CompanyEnrichSDK::test([
+    "entity" => ["companyenrichment" => ["test01" => ["id" => "test01"]]],
+]);
+$companyenrichment = $client->CompanyEnrichment()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -195,15 +200,18 @@ result, err := client.CompanyEnrichment(nil).Load(
 ### Ruby
 
 ```ruby
-client = CompanyEnrichSDK.test
-result = client.companyenrichment.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = CompanyEnrichSDK.test({
+  "entity" => { "companyenrichment" => { "test01" => { "id" => "test01" } } },
+})
+companyenrichment = client.CompanyEnrichment.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:companyenrichment():load({ id = "test01" })
+local result, err = client:CompanyEnrichment():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,6 +259,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

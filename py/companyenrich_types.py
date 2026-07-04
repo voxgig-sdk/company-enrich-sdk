@@ -4,67 +4,65 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class CompanyEnrichment:
-    data: Optional[dict] = None
-    success: Optional[bool] = None
+class CompanyEnrichment(TypedDict, total=False):
+    data: dict
+    success: bool
 
 
-@dataclass
-class CompanyEnrichmentLoadMatch:
-    data: Optional[dict] = None
-    success: Optional[bool] = None
+class CompanyEnrichmentLoadMatch(TypedDict, total=False):
+    data: dict
+    success: bool
 
 
-@dataclass
-class CompanySearch:
-    company_id: Optional[str] = None
-    domain: Optional[str] = None
-    employee_count: Optional[int] = None
-    industry: Optional[str] = None
-    location: Optional[str] = None
-    logo_url: Optional[str] = None
-    name: Optional[str] = None
+class CompanySearch(TypedDict, total=False):
+    company_id: str
+    domain: str
+    employee_count: int
+    industry: str
+    location: str
+    logo_url: str
+    name: str
 
 
-@dataclass
-class CompanySearchListMatch:
-    company_id: Optional[str] = None
-    domain: Optional[str] = None
-    employee_count: Optional[int] = None
-    industry: Optional[str] = None
-    location: Optional[str] = None
-    logo_url: Optional[str] = None
-    name: Optional[str] = None
+class CompanySearchListMatch(TypedDict, total=False):
+    company_id: str
+    domain: str
+    employee_count: int
+    industry: str
+    location: str
+    logo_url: str
+    name: str
 
 
-@dataclass
-class Similar:
-    company_id: Optional[str] = None
-    domain: Optional[str] = None
-    employee_count: Optional[int] = None
-    industry: Optional[str] = None
-    location: Optional[str] = None
-    logo_url: Optional[str] = None
-    name: Optional[str] = None
-    similarity_score: Optional[float] = None
+class Similar(TypedDict, total=False):
+    company_id: str
+    domain: str
+    employee_count: int
+    industry: str
+    location: str
+    logo_url: str
+    name: str
+    similarity_score: float
 
 
-@dataclass
-class SimilarListMatch:
-    company_id: Optional[str] = None
-    domain: Optional[str] = None
-    employee_count: Optional[int] = None
-    industry: Optional[str] = None
-    location: Optional[str] = None
-    logo_url: Optional[str] = None
-    name: Optional[str] = None
-    similarity_score: Optional[float] = None
-
+class SimilarListMatch(TypedDict, total=False):
+    company_id: str
+    domain: str
+    employee_count: int
+    industry: str
+    location: str
+    logo_url: str
+    name: str
+    similarity_score: float
