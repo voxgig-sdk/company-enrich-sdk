@@ -45,6 +45,7 @@ class CompanyEnrichmentEntity
     end
   end
 
+  # @return [CompanyEnrichment, Hash] the current CompanyEnrichment data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class CompanyEnrichmentEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of CompanyEnrichment fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single CompanyEnrichment.
+  #
+  # @param reqmatch [CompanyEnrichmentLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [CompanyEnrichment, Hash] the loaded CompanyEnrichment; raises CompanyEnrichError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

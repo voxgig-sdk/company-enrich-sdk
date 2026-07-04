@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:company_enrichment():list() / client:company_enrichment():load({ id = ... })
+function CompanyEnrichSDK:company_enrichment(data)
+  local EntityMod = require("entity.company_enrichment_entity")
+  if data == nil then
+    if self._company_enrichment == nil then
+      self._company_enrichment = EntityMod.new(self, nil)
+    end
+    return self._company_enrichment
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:company_enrichment() instead.
 function CompanyEnrichSDK:CompanyEnrichment(data)
   local EntityMod = require("entity.company_enrichment_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:company_search():list() / client:company_search():load({ id = ... })
+function CompanyEnrichSDK:company_search(data)
+  local EntityMod = require("entity.company_search_entity")
+  if data == nil then
+    if self._company_search == nil then
+      self._company_search = EntityMod.new(self, nil)
+    end
+    return self._company_search
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:company_search() instead.
 function CompanyEnrichSDK:CompanySearch(data)
   local EntityMod = require("entity.company_search_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:similar():list() / client:similar():load({ id = ... })
+function CompanyEnrichSDK:similar(data)
+  local EntityMod = require("entity.similar_entity")
+  if data == nil then
+    if self._similar == nil then
+      self._similar = EntityMod.new(self, nil)
+    end
+    return self._similar
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:similar() instead.
 function CompanyEnrichSDK:Similar(data)
   local EntityMod = require("entity.similar_entity")
   return EntityMod.new(self, data)

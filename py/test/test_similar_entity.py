@@ -50,8 +50,7 @@ class TestSimilarEntity:
         similar_ref01_ent = client.Similar(None)
         similar_ref01_match = {}
 
-        similar_ref01_list_result, err = similar_ref01_ent.list(similar_ref01_match, None)
-        assert err is None
+        similar_ref01_list_result = similar_ref01_ent.list(similar_ref01_match, None)
         assert isinstance(similar_ref01_list_result, list)
 
 

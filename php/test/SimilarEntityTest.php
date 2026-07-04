@@ -50,8 +50,7 @@ class SimilarEntityTest extends TestCase
         $similar_ref01_ent = $client->Similar(null);
         $similar_ref01_match = [];
 
-        [$similar_ref01_list_result, $err] = $similar_ref01_ent->list($similar_ref01_match, null);
-        $this->assertNull($err);
+        $similar_ref01_list_result = $similar_ref01_ent->list($similar_ref01_match, null);
         $this->assertIsArray($similar_ref01_list_result);
 
     }

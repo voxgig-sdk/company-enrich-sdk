@@ -9,9 +9,10 @@ The PHP SDK for the CompanyEnrich API — an entity-oriented client using PHP co
 
 
 ## Install
-```bash
-composer require voxgig-sdk/company-enrich
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/company-enrich-sdk/releases](https://github.com/voxgig-sdk/company-enrich-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -26,16 +27,19 @@ loading a specific record.
 require_once 'companyenrich_sdk.php';
 
 $client = new CompanyEnrichSDK([
-    "apikey" => getenv("COMPANY-ENRICH_APIKEY"),
+    "apikey" => getenv("COMPANY_ENRICH_APIKEY"),
 ]);
 ```
 
 ### 3. Load a companyenrichment
 
 ```php
-[$result, $err] = $client->CompanyEnrichment()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->companyenrichment()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -46,28 +50,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -81,7 +88,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = CompanyEnrichSDK::test();
 
-[$result, $err] = $client->CompanyEnrich()->load(["id" => "test01"]);
+$result = $client->companyenrichment()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -115,8 +122,8 @@ $client = new CompanyEnrichSDK([
 Create a `.env.local` file at the project root:
 
 ```
-COMPANY-ENRICH_TEST_LIVE=TRUE
-COMPANY-ENRICH_APIKEY=<your-key>
+COMPANY_ENRICH_TEST_LIVE=TRUE
+COMPANY_ENRICH_APIKEY=<your-key>
 ```
 
 Then run:
@@ -187,8 +194,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -252,7 +263,7 @@ API path: `/v1/similar`
 
 ### CompanyEnrichment
 
-Create an instance: `const company_enrichment = client.CompanyEnrichment()`
+Create an instance: `const company_enrichment = client.company_enrichment`
 
 #### Operations
 
@@ -270,13 +281,13 @@ Create an instance: `const company_enrichment = client.CompanyEnrichment()`
 #### Example: Load
 
 ```ts
-const company_enrichment = await client.CompanyEnrichment().load({ id: 'company_enrichment_id' })
+const company_enrichment = await client.company_enrichment.load({ id: 'company_enrichment_id' })
 ```
 
 
 ### CompanySearch
 
-Create an instance: `const company_search = client.CompanySearch()`
+Create an instance: `const company_search = client.company_search`
 
 #### Operations
 
@@ -299,13 +310,13 @@ Create an instance: `const company_search = client.CompanySearch()`
 #### Example: List
 
 ```ts
-const company_searchs = await client.CompanySearch().list()
+const company_searchs = await client.company_search.list()
 ```
 
 
 ### Similar
 
-Create an instance: `const similar = client.Similar()`
+Create an instance: `const similar = client.similar`
 
 #### Operations
 
@@ -329,7 +340,7 @@ Create an instance: `const similar = client.Similar()`
 #### Example: List
 
 ```ts
-const similars = await client.Similar().list()
+const similars = await client.similar.list()
 ```
 
 
@@ -404,11 +415,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$companyenrichment = $client->companyenrichment();
+$companyenrichment->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $companyenrichment->dataGet() now returns the loaded companyenrichment data
+// $companyenrichment->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

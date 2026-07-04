@@ -49,8 +49,7 @@ class TestCompanyEnrichmentEntity:
         # LOAD
         company_enrichment_ref01_ent = client.CompanyEnrichment(None)
         company_enrichment_ref01_match_dt0 = {}
-        company_enrichment_ref01_data_dt0_loaded, err = company_enrichment_ref01_ent.load(company_enrichment_ref01_match_dt0, None)
-        assert err is None
+        company_enrichment_ref01_data_dt0_loaded = company_enrichment_ref01_ent.load(company_enrichment_ref01_match_dt0, None)
         assert company_enrichment_ref01_data_dt0_loaded is not None
 
 

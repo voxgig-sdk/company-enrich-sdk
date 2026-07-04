@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch CompanySearchListMatch
+---@param ctrl? table
+---@return CompanySearch[]
+---@return string? err
 function CompanySearchEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -43,8 +43,7 @@ class SimilarEntityTest < Minitest::Test
     similar_ref01_ent = client.Similar(nil)
     similar_ref01_match = {}
 
-    similar_ref01_list_result, err = similar_ref01_ent.list(similar_ref01_match, nil)
-    assert_nil err
+    similar_ref01_list_result = similar_ref01_ent.list(similar_ref01_match, nil)
     assert similar_ref01_list_result.is_a?(Array)
 
   end

@@ -43,8 +43,7 @@ class CompanySearchEntityTest < Minitest::Test
     company_search_ref01_ent = client.CompanySearch(nil)
     company_search_ref01_match = {}
 
-    company_search_ref01_list_result, err = company_search_ref01_ent.list(company_search_ref01_match, nil)
-    assert_nil err
+    company_search_ref01_list_result = company_search_ref01_ent.list(company_search_ref01_match, nil)
     assert company_search_ref01_list_result.is_a?(Array)
 
   end

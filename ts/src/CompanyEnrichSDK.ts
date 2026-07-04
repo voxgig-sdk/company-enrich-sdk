@@ -4,6 +4,8 @@ import { CompanyEnrichmentEntity } from './entity/CompanyEnrichmentEntity'
 import { CompanySearchEntity } from './entity/CompanySearchEntity'
 import { SimilarEntity } from './entity/SimilarEntity'
 
+export type * from './CompanyEnrichTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class CompanyEnrichSDK {
 
 
 
+  _company_enrichment?: CompanyEnrichmentEntity
+
+  // Idiomatic facade: `client.company_enrichment.list()` / `client.company_enrichment.load({ id })`.
+  get company_enrichment(): CompanyEnrichmentEntity {
+    return (this._company_enrichment ??= new CompanyEnrichmentEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.company_enrichment` instead. */
   CompanyEnrichment(data?: any) {
     const self = this
     return new CompanyEnrichmentEntity(self,data)
   }
 
 
+  _company_search?: CompanySearchEntity
+
+  // Idiomatic facade: `client.company_search.list()` / `client.company_search.load({ id })`.
+  get company_search(): CompanySearchEntity {
+    return (this._company_search ??= new CompanySearchEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.company_search` instead. */
   CompanySearch(data?: any) {
     const self = this
     return new CompanySearchEntity(self,data)
   }
 
 
+  _similar?: SimilarEntity
+
+  // Idiomatic facade: `client.similar.list()` / `client.similar.load({ id })`.
+  get similar(): SimilarEntity {
+    return (this._similar ??= new SimilarEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.similar` instead. */
   Similar(data?: any) {
     const self = this
     return new SimilarEntity(self,data)

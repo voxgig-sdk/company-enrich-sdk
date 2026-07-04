@@ -49,8 +49,7 @@ class CompanyEnrichmentEntityTest extends TestCase
         // LOAD
         $company_enrichment_ref01_ent = $client->CompanyEnrichment(null);
         $company_enrichment_ref01_match_dt0 = [];
-        [$company_enrichment_ref01_data_dt0_loaded, $err] = $company_enrichment_ref01_ent->load($company_enrichment_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $company_enrichment_ref01_data_dt0_loaded = $company_enrichment_ref01_ent->load($company_enrichment_ref01_match_dt0, null);
         $this->assertNotNull($company_enrichment_ref01_data_dt0_loaded);
 
     }

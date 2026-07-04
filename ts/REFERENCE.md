@@ -134,7 +134,7 @@ Alias for `CompanyEnrichSDK.test()`.
 ## CompanyEnrichmentEntity
 
 ```ts
-const company_enrichment = client.CompanyEnrichment()
+const company_enrichment = client.company_enrichment
 ```
 
 ### Fields
@@ -151,7 +151,7 @@ const company_enrichment = client.CompanyEnrichment()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.CompanyEnrichment().load({ id: 'company_enrichment_id' })
+const result = await client.company_enrichment.load({ id: 'company_enrichment_id' })
 ```
 
 ### Common Methods
@@ -185,7 +185,7 @@ Return a copy of the entity options.
 ## CompanySearchEntity
 
 ```ts
-const company_search = client.CompanySearch()
+const company_search = client.company_search
 ```
 
 ### Fields
@@ -207,7 +207,7 @@ const company_search = client.CompanySearch()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.CompanySearch().list()
+const results = await client.company_search.list()
 ```
 
 ### Common Methods
@@ -241,7 +241,7 @@ Return a copy of the entity options.
 ## SimilarEntity
 
 ```ts
-const similar = client.Similar()
+const similar = client.similar
 ```
 
 ### Fields
@@ -264,7 +264,7 @@ const similar = client.Similar()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Similar().list()
+const results = await client.similar.list()
 ```
 
 ### Common Methods

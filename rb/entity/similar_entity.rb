@@ -45,6 +45,7 @@ class SimilarEntity
     end
   end
 
+  # @return [Similar, Hash] the current Similar data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class SimilarEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Similar fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class SimilarEntity
   
 
   
+  # List Similar items matching the given filter.
+  #
+  # @param reqmatch [SimilarListMatch, Hash, nil] match filter (any subset of Similar fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Similar>, Array] the matching Similar items; raises CompanyEnrichError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

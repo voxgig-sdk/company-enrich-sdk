@@ -42,8 +42,7 @@ class CompanyEnrichmentEntityTest < Minitest::Test
     # LOAD
     company_enrichment_ref01_ent = client.CompanyEnrichment(nil)
     company_enrichment_ref01_match_dt0 = {}
-    company_enrichment_ref01_data_dt0_loaded, err = company_enrichment_ref01_ent.load(company_enrichment_ref01_match_dt0, nil)
-    assert_nil err
+    company_enrichment_ref01_data_dt0_loaded = company_enrichment_ref01_ent.load(company_enrichment_ref01_match_dt0, nil)
     assert !company_enrichment_ref01_data_dt0_loaded.nil?
 
   end

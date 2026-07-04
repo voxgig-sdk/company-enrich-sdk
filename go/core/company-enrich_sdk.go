@@ -245,16 +245,25 @@ func (sdk *CompanyEnrichSDK) Direct(fetchargs map[string]any) (map[string]any, e
 }
 
 
+// CompanyEnrichment returns a CompanyEnrichment entity bound to this client.
+// Idiomatic usage: client.CompanyEnrichment(nil).List(nil, nil) or
+// client.CompanyEnrichment(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CompanyEnrichSDK) CompanyEnrichment(data map[string]any) CompanyEnrichEntity {
 	return NewCompanyEnrichmentEntityFunc(sdk, data)
 }
 
 
+// CompanySearch returns a CompanySearch entity bound to this client.
+// Idiomatic usage: client.CompanySearch(nil).List(nil, nil) or
+// client.CompanySearch(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CompanyEnrichSDK) CompanySearch(data map[string]any) CompanyEnrichEntity {
 	return NewCompanySearchEntityFunc(sdk, data)
 }
 
 
+// Similar returns a Similar entity bound to this client.
+// Idiomatic usage: client.Similar(nil).List(nil, nil) or
+// client.Similar(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CompanyEnrichSDK) Similar(data map[string]any) CompanyEnrichEntity {
 	return NewSimilarEntityFunc(sdk, data)
 }

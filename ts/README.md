@@ -9,9 +9,12 @@ The TypeScript SDK for the CompanyEnrich API — a type-safe, entity-oriented cl
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/company-enrich
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/company-enrich-sdk/releases](https://github.com/voxgig-sdk/company-enrich-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CompanyEnrichSDK } from 'company-enrich'
+import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich'
 
 const client = new CompanyEnrichSDK({
-  apikey: process.env.COMPANY-ENRICH_APIKEY,
+  apikey: process.env.COMPANY_ENRICH_APIKEY,
 })
 ```
 
 ### 3. Load a companyenrichment
 
 ```ts
-const result = await client.CompanyEnrichment().load({ id: 'example_id' })
+const result = await client.companyenrichment.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CompanyEnrichSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.companyenrichment.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -96,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.companyenrichment
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -133,8 +136,8 @@ const client = new CompanyEnrichSDK({
 Create a `.env.local` file at the project root:
 
 ```
-COMPANY-ENRICH_TEST_LIVE=TRUE
-COMPANY-ENRICH_APIKEY=<your-key>
+COMPANY_ENRICH_TEST_LIVE=TRUE
+COMPANY_ENRICH_APIKEY=<your-key>
 ```
 
 Then run:
@@ -302,7 +305,7 @@ API path: `/v1/similar`
 
 ### CompanyEnrichment
 
-Create an instance: `const company_enrichment = client.CompanyEnrichment()`
+Create an instance: `const company_enrichment = client.company_enrichment`
 
 #### Operations
 
@@ -320,13 +323,13 @@ Create an instance: `const company_enrichment = client.CompanyEnrichment()`
 #### Example: Load
 
 ```ts
-const company_enrichment = await client.CompanyEnrichment().load({ id: 'company_enrichment_id' })
+const company_enrichment = await client.company_enrichment.load({ id: 'company_enrichment_id' })
 ```
 
 
 ### CompanySearch
 
-Create an instance: `const company_search = client.CompanySearch()`
+Create an instance: `const company_search = client.company_search`
 
 #### Operations
 
@@ -349,13 +352,13 @@ Create an instance: `const company_search = client.CompanySearch()`
 #### Example: List
 
 ```ts
-const company_searchs = await client.CompanySearch().list()
+const company_searchs = await client.company_search.list()
 ```
 
 
 ### Similar
 
-Create an instance: `const similar = client.Similar()`
+Create an instance: `const similar = client.similar`
 
 #### Operations
 
@@ -379,7 +382,7 @@ Create an instance: `const similar = client.Similar()`
 #### Example: List
 
 ```ts
-const similars = await client.Similar().list()
+const similars = await client.similar.list()
 ```
 
 
@@ -440,7 +443,7 @@ company-enrich/
 Import the SDK from the package root:
 
 ```ts
-import { CompanyEnrichSDK } from 'company-enrich'
+import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich'
 ```
 
 ### Entity state
@@ -450,11 +453,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const companyenrichment = client.companyenrichment
+await companyenrichment.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// companyenrichment.data() now returns the loaded companyenrichment data
+// companyenrichment.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

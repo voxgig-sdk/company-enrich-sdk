@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch SimilarListMatch
+---@param ctrl? table
+---@return Similar[]
+---@return string? err
 function SimilarEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

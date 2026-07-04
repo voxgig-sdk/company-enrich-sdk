@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  CompanyEnrichment,
+  CompanyEnrichmentLoadMatch,
+} from '../CompanyEnrichTypes'
 
 // TODO: needs Entity superclass
-class CompanyEnrichmentEntity extends CompanyEnrichEntityBase {
+class CompanyEnrichmentEntity extends CompanyEnrichEntityBase<CompanyEnrichment> {
 
   constructor(client: CompanyEnrichSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class CompanyEnrichmentEntity extends CompanyEnrichEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: CompanyEnrichmentLoadMatch, ctrl?: Control): Promise<CompanyEnrichment> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class CompanyEnrichmentEntity extends CompanyEnrichEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<CompanyEnrichment> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

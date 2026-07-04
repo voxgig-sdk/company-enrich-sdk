@@ -50,8 +50,7 @@ class TestCompanySearchEntity:
         company_search_ref01_ent = client.CompanySearch(None)
         company_search_ref01_match = {}
 
-        company_search_ref01_list_result, err = company_search_ref01_ent.list(company_search_ref01_match, None)
-        assert err is None
+        company_search_ref01_list_result = company_search_ref01_ent.list(company_search_ref01_match, None)
         assert isinstance(company_search_ref01_list_result, list)
 
 

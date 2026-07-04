@@ -85,6 +85,27 @@ func (e *CompanyEnrichmentEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an CompanyEnrichment; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *CompanyEnrichmentEntity) DataTyped(data ...CompanyEnrichment) CompanyEnrichment {
+	if len(data) > 0 {
+		return typedFrom[CompanyEnrichment](e.Data(asMap(data[0])))
+	}
+	return typedFrom[CompanyEnrichment](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through CompanyEnrichment (all fields
+// optional at the wire level).
+func (e *CompanyEnrichmentEntity) MatchTyped(match ...CompanyEnrichment) CompanyEnrichment {
+	if len(match) > 0 {
+		return typedFrom[CompanyEnrichment](e.Match(asMap(match[0])))
+	}
+	return typedFrom[CompanyEnrichment](e.Match())
+}
+
 
 func (e *CompanyEnrichmentEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *CompanyEnrichmentEntity) Load(reqmatch map[string]any, ctrl map[string]
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// CompanyEnrichmentLoadMatch and returns an CompanyEnrichment. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *CompanyEnrichmentEntity) LoadTyped(reqmatch CompanyEnrichmentLoadMatch, ctrl map[string]any) (CompanyEnrichment, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return CompanyEnrichment{}, err
+	}
+	return typedFrom[CompanyEnrichment](res), nil
 }
 
 

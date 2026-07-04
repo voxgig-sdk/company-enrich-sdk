@@ -9,12 +9,9 @@ The Lua SDK for the CompanyEnrich API — an entity-oriented client using Lua co
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-company-enrich
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/company-enrich-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -32,14 +29,14 @@ loading a specific record.
 local sdk = require("company-enrich_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("COMPANY-ENRICH_APIKEY"),
+  apikey = os.getenv("COMPANY_ENRICH_APIKEY"),
 })
 ```
 
 ### 3. Load a companyenrichment
 
 ```lua
-local result, err = client:CompanyEnrichment():load({ id = "example_id" })
+local result, err = client:companyenrichment():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:CompanyEnrich():load({ id = "test01" })
+local result, err = client:companyenrichment():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -120,8 +117,8 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-COMPANY-ENRICH_TEST_LIVE=TRUE
-COMPANY-ENRICH_APIKEY=<your-key>
+COMPANY_ENRICH_TEST_LIVE=TRUE
+COMPANY_ENRICH_APIKEY=<your-key>
 ```
 
 Then run:
@@ -257,7 +254,7 @@ API path: `/v1/similar`
 
 ### CompanyEnrichment
 
-Create an instance: `const company_enrichment = client.CompanyEnrichment()`
+Create an instance: `const company_enrichment = client.company_enrichment`
 
 #### Operations
 
@@ -275,13 +272,13 @@ Create an instance: `const company_enrichment = client.CompanyEnrichment()`
 #### Example: Load
 
 ```ts
-const company_enrichment = await client.CompanyEnrichment().load({ id: 'company_enrichment_id' })
+const company_enrichment = await client.company_enrichment.load({ id: 'company_enrichment_id' })
 ```
 
 
 ### CompanySearch
 
-Create an instance: `const company_search = client.CompanySearch()`
+Create an instance: `const company_search = client.company_search`
 
 #### Operations
 
@@ -304,13 +301,13 @@ Create an instance: `const company_search = client.CompanySearch()`
 #### Example: List
 
 ```ts
-const company_searchs = await client.CompanySearch().list()
+const company_searchs = await client.company_search.list()
 ```
 
 
 ### Similar
 
-Create an instance: `const similar = client.Similar()`
+Create an instance: `const similar = client.similar`
 
 #### Operations
 
@@ -334,7 +331,7 @@ Create an instance: `const similar = client.Similar()`
 #### Example: List
 
 ```ts
-const similars = await client.Similar().list()
+const similars = await client.similar.list()
 ```
 
 
@@ -409,11 +406,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local companyenrichment = client:companyenrichment()
+companyenrichment:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- companyenrichment:data_get() now returns the loaded companyenrichment data
+-- companyenrichment:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

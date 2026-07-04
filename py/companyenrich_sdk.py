@@ -144,16 +144,23 @@ class CompanyEnrichSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class CompanyEnrichSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class CompanyEnrichSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def company_enrichment(self):
+        """Idiomatic facade: client.company_enrichment.list() / client.company_enrichment.load({"id": ...})."""
+        from entity.company_enrichment_entity import CompanyEnrichmentEntity
+        cached = getattr(self, "_company_enrichment", None)
+        if cached is None:
+            cached = CompanyEnrichmentEntity(self, None)
+            self._company_enrichment = cached
+        return cached
 
     def CompanyEnrichment(self, data=None):
+        # Deprecated: use client.company_enrichment instead.
         from entity.company_enrichment_entity import CompanyEnrichmentEntity
         return CompanyEnrichmentEntity(self, data)
 
 
+    @property
+    def company_search(self):
+        """Idiomatic facade: client.company_search.list() / client.company_search.load({"id": ...})."""
+        from entity.company_search_entity import CompanySearchEntity
+        cached = getattr(self, "_company_search", None)
+        if cached is None:
+            cached = CompanySearchEntity(self, None)
+            self._company_search = cached
+        return cached
+
     def CompanySearch(self, data=None):
+        # Deprecated: use client.company_search instead.
         from entity.company_search_entity import CompanySearchEntity
         return CompanySearchEntity(self, data)
 
 
+    @property
+    def similar(self):
+        """Idiomatic facade: client.similar.list() / client.similar.load({"id": ...})."""
+        from entity.similar_entity import SimilarEntity
+        cached = getattr(self, "_similar", None)
+        if cached is None:
+            cached = SimilarEntity(self, None)
+            self._similar = cached
+        return cached
+
     def Similar(self, data=None):
+        # Deprecated: use client.similar instead.
         from entity.similar_entity import SimilarEntity
         return SimilarEntity(self, data)
 

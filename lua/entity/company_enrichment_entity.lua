@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CompanyEnrichmentLoadMatch
+---@param ctrl? table
+---@return CompanyEnrichment
+---@return string? err
 function CompanyEnrichmentEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

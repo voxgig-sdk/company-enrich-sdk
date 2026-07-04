@@ -50,8 +50,7 @@ class CompanySearchEntityTest extends TestCase
         $company_search_ref01_ent = $client->CompanySearch(null);
         $company_search_ref01_match = [];
 
-        [$company_search_ref01_list_result, $err] = $company_search_ref01_ent->list($company_search_ref01_match, null);
-        $this->assertNull($err);
+        $company_search_ref01_list_result = $company_search_ref01_ent->list($company_search_ref01_match, null);
         $this->assertIsArray($company_search_ref01_list_result);
 
     }
