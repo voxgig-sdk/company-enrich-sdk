@@ -10,7 +10,10 @@ export interface CompanyEnrichment {
   success?: boolean
 }
 
-export type CompanyEnrichmentLoadMatch = Partial<CompanyEnrichment>
+export interface CompanyEnrichmentLoadMatch {
+  data?: Record<string, any>
+  success?: boolean
+}
 
 export interface CompanySearch {
   company_id?: string
@@ -22,7 +25,15 @@ export interface CompanySearch {
   name?: string
 }
 
-export type CompanySearchListMatch = Partial<CompanySearch>
+export interface CompanySearchListMatch {
+  company_id?: string
+  domain?: string
+  employee_count?: number
+  industry?: string
+  location?: string
+  logo_url?: string
+  name?: string
+}
 
 export interface Similar {
   company_id?: string
@@ -35,5 +46,14 @@ export interface Similar {
   similarity_score?: number
 }
 
-export type SimilarListMatch = Partial<Similar>
+export interface SimilarListMatch {
+  company_id?: string
+  domain?: string
+  employee_count?: number
+  industry?: string
+  location?: string
+  logo_url?: string
+  name?: string
+  similarity_score?: number
+}
 

@@ -19,7 +19,7 @@ class CompanyEnrichment
     public ?bool $success = null;
 }
 
-/** Match filter for CompanyEnrichment#load (any subset of CompanyEnrichment fields). */
+/** Request payload for CompanyEnrichment#load. */
 class CompanyEnrichmentLoadMatch
 {
     public ?array $data = null;
@@ -38,7 +38,7 @@ class CompanySearch
     public ?string $name = null;
 }
 
-/** Match filter for CompanySearch#list (any subset of CompanySearch fields). */
+/** Request payload for CompanySearch#list. */
 class CompanySearchListMatch
 {
     public ?string $company_id = null;
@@ -63,7 +63,7 @@ class Similar
     public ?float $similarity_score = null;
 }
 
-/** Match filter for Similar#list (any subset of Similar fields). */
+/** Request payload for Similar#list. */
 class SimilarListMatch
 {
     public ?string $company_id = null;

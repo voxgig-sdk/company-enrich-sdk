@@ -99,8 +99,8 @@ local company_enrichment = client:CompanyEnrichment(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `table` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 
@@ -109,7 +109,7 @@ local company_enrichment = client:CompanyEnrichment(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:CompanyEnrichment():load({ id = "company_enrichment_id" })
+local result, err = client:CompanyEnrichment():load()
 ```
 
 ### Common Methods
@@ -152,13 +152,13 @@ local company_search = client:CompanySearch(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `company_id` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `employee_count` | `number` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `string` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -210,14 +210,14 @@ local similar = client:Similar(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `similarity_score` | ``$NUMBER`` | No |  |
+| `company_id` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `employee_count` | `number` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `string` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `similarity_score` | `number` | No |  |
 
 ### Operations
 

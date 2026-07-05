@@ -141,8 +141,8 @@ const company_enrichment = client.CompanyEnrichment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `Record<string, any>` | No |  |
+| `success` | `boolean` | No |  |
 
 ### Operations
 
@@ -151,7 +151,7 @@ const company_enrichment = client.CompanyEnrichment()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.CompanyEnrichment().load({ id: 'company_enrichment_id' })
+const result = await client.CompanyEnrichment().load()
 ```
 
 ### Common Methods
@@ -192,13 +192,13 @@ const company_search = client.CompanySearch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `company_id` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `employee_count` | `number` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `string` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -248,14 +248,14 @@ const similar = client.Similar()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `similarity_score` | ``$NUMBER`` | No |  |
+| `company_id` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `employee_count` | `number` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `string` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `similarity_score` | `number` | No |  |
 
 ### Operations
 

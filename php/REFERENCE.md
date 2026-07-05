@@ -8,7 +8,7 @@ Complete API reference for the CompanyEnrich PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/company-enrich_sdk.php';
+require_once __DIR__ . '/companyenrich_sdk.php';
 
 $client = new CompanyEnrichSDK($options);
 ```
@@ -54,11 +54,11 @@ Create a new `CompanySearchEntity` instance. Pass `null` for no initial data.
 
 Create a new `SimilarEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): CompanyEnrichUtility`
 
 Return a copy of the SDK utility object.
 
@@ -101,8 +101,8 @@ $company_enrichment = $client->CompanyEnrichment();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `array` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -111,24 +111,24 @@ $company_enrichment = $client->CompanyEnrichment();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->CompanyEnrichment()->load(["id" => "company_enrichment_id"]);
+$result = $client->CompanyEnrichment()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -137,7 +137,7 @@ Set the entity match criteria.
 Create a new `CompanyEnrichmentEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -154,39 +154,39 @@ $company_search = $client->CompanySearch();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `company_id` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `employee_count` | `int` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `string` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->CompanySearch()->list([]);
+$results = $client->CompanySearch()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -195,7 +195,7 @@ Set the entity match criteria.
 Create a new `CompanySearchEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -212,40 +212,40 @@ $similar = $client->Similar();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `similarity_score` | ``$NUMBER`` | No |  |
+| `company_id` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `employee_count` | `int` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `string` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `similarity_score` | `float` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Similar()->list([]);
+$results = $client->Similar()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -254,7 +254,7 @@ Set the entity match criteria.
 Create a new `SimilarEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

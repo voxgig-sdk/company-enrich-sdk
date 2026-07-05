@@ -21,7 +21,7 @@ CompanyEnrichment = Struct.new(
   keyword_init: true
 )
 
-# Match filter for CompanyEnrichment#load (any subset of CompanyEnrichment fields).
+# Request payload for CompanyEnrichment#load.
 #
 # @!attribute [rw] data
 #   @return [Hash, nil]
@@ -67,7 +67,7 @@ CompanySearch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for CompanySearch#list (any subset of CompanySearch fields).
+# Request payload for CompanySearch#list.
 #
 # @!attribute [rw] company_id
 #   @return [String, nil]
@@ -137,7 +137,7 @@ Similar = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Similar#list (any subset of Similar fields).
+# Request payload for Similar#list.
 #
 # @!attribute [rw] company_id
 #   @return [String, nil]

@@ -8,7 +8,7 @@ Complete API reference for the CompanyEnrich Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'company-enrich_sdk'
+require_relative 'CompanyEnrich_sdk'
 
 client = CompanyEnrichSDK.new(options)
 ```
@@ -102,8 +102,8 @@ company_enrichment = client.CompanyEnrichment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `Hash` | No |  |
+| `success` | `Boolean` | No |  |
 
 ### Operations
 
@@ -112,7 +112,7 @@ company_enrichment = client.CompanyEnrichment
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.CompanyEnrichment.load({ "id" => "company_enrichment_id" })
+result = client.CompanyEnrichment.load()
 ```
 
 ### Common Methods
@@ -155,22 +155,22 @@ company_search = client.CompanySearch
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `company_id` | `String` | No |  |
+| `domain` | `String` | No |  |
+| `employee_count` | `Integer` | No |  |
+| `industry` | `String` | No |  |
+| `location` | `String` | No |  |
+| `logo_url` | `String` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.CompanySearch.list(nil)
+results = client.CompanySearch.list
 ```
 
 ### Common Methods
@@ -213,23 +213,23 @@ similar = client.Similar
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `similarity_score` | ``$NUMBER`` | No |  |
+| `company_id` | `String` | No |  |
+| `domain` | `String` | No |  |
+| `employee_count` | `Integer` | No |  |
+| `industry` | `String` | No |  |
+| `location` | `String` | No |  |
+| `logo_url` | `String` | No |  |
+| `name` | `String` | No |  |
+| `similarity_score` | `Float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Similar.list(nil)
+results = client.Similar.list
 ```
 
 ### Common Methods

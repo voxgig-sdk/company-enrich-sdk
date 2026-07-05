@@ -221,19 +221,19 @@ class CompanyEnrichSDK:
 
 
     def CompanyEnrichment(self, data=None) -> "CompanyEnrichmentEntity":
-        """Entity factory: client.CompanyEnrichment().list({}) / client.CompanyEnrichment().load({"id": ...})."""
+        """Entity factory: client.CompanyEnrichment().list() / client.CompanyEnrichment().load({"id": ...})."""
         from entity.company_enrichment_entity import CompanyEnrichmentEntity
         return CompanyEnrichmentEntity(self, data)
 
 
     def CompanySearch(self, data=None) -> "CompanySearchEntity":
-        """Entity factory: client.CompanySearch().list({}) / client.CompanySearch().load({"id": ...})."""
+        """Entity factory: client.CompanySearch().list() / client.CompanySearch().load({"id": ...})."""
         from entity.company_search_entity import CompanySearchEntity
         return CompanySearchEntity(self, data)
 
 
     def Similar(self, data=None) -> "SimilarEntity":
-        """Entity factory: client.Similar().list({}) / client.Similar().load({"id": ...})."""
+        """Entity factory: client.Similar().list() / client.Similar().load({"id": ...})."""
         from entity.similar_entity import SimilarEntity
         return SimilarEntity(self, data)
 

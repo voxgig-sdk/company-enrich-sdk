@@ -11,6 +11,8 @@
 ---@field success? boolean
 
 ---@class CompanyEnrichmentLoadMatch
+---@field data? table
+---@field success? boolean
 
 ---@class CompanySearch
 ---@field company_id? string
@@ -22,6 +24,13 @@
 ---@field name? string
 
 ---@class CompanySearchListMatch
+---@field company_id? string
+---@field domain? string
+---@field employee_count? number
+---@field industry? string
+---@field location? string
+---@field logo_url? string
+---@field name? string
 
 ---@class Similar
 ---@field company_id? string
@@ -34,6 +43,14 @@
 ---@field similarity_score? number
 
 ---@class SimilarListMatch
+---@field company_id? string
+---@field domain? string
+---@field employee_count? number
+---@field industry? string
+---@field location? string
+---@field logo_url? string
+---@field name? string
+---@field similarity_score? number
 
 local M = {}
 

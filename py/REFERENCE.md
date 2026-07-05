@@ -8,7 +8,7 @@ Complete API reference for the CompanyEnrich Python SDK.
 ### Constructor
 
 ```python
-from company-enrich_sdk import CompanyEnrichSDK
+from companyenrich_sdk import CompanyEnrichSDK
 
 client = CompanyEnrichSDK(options)
 ```
@@ -96,8 +96,8 @@ company_enrichment = client.CompanyEnrichment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | ``$OBJECT`` | No |  |
-| `success` | ``$BOOLEAN`` | No |  |
+| `data` | `dict` | No |  |
+| `success` | `bool` | No |  |
 
 ### Operations
 
@@ -106,7 +106,7 @@ company_enrichment = client.CompanyEnrichment()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.CompanyEnrichment().load({"id": "company_enrichment_id"})
+result = client.CompanyEnrichment().load()
 ```
 
 ### Common Methods
@@ -148,22 +148,22 @@ company_search = client.CompanySearch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `company_id` | `str` | No |  |
+| `domain` | `str` | No |  |
+| `employee_count` | `int` | No |  |
+| `industry` | `str` | No |  |
+| `location` | `str` | No |  |
+| `logo_url` | `str` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.CompanySearch().list({})
+results = client.CompanySearch().list()
 for company_search in results:
     print(company_search)
 ```
@@ -207,23 +207,23 @@ similar = client.Similar()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | ``$STRING`` | No |  |
-| `domain` | ``$STRING`` | No |  |
-| `employee_count` | ``$INTEGER`` | No |  |
-| `industry` | ``$STRING`` | No |  |
-| `location` | ``$STRING`` | No |  |
-| `logo_url` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `similarity_score` | ``$NUMBER`` | No |  |
+| `company_id` | `str` | No |  |
+| `domain` | `str` | No |  |
+| `employee_count` | `int` | No |  |
+| `industry` | `str` | No |  |
+| `location` | `str` | No |  |
+| `logo_url` | `str` | No |  |
+| `name` | `str` | No |  |
+| `similarity_score` | `float` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Similar().list({})
+results = client.Similar().list()
 for similar in results:
     print(similar)
 ```

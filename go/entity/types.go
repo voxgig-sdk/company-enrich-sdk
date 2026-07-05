@@ -14,8 +14,7 @@ type CompanyEnrichment struct {
 	Success *bool `json:"success,omitempty"`
 }
 
-// CompanyEnrichmentLoadMatch mirrors the company_enrichment fields as an all-optional match
-// filter (Go analog of Partial<CompanyEnrichment>).
+// CompanyEnrichmentLoadMatch is the typed request payload for CompanyEnrichment.LoadTyped.
 type CompanyEnrichmentLoadMatch struct {
 	Data *map[string]any `json:"data,omitempty"`
 	Success *bool `json:"success,omitempty"`
@@ -32,8 +31,7 @@ type CompanySearch struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// CompanySearchListMatch mirrors the company_search fields as an all-optional match
-// filter (Go analog of Partial<CompanySearch>).
+// CompanySearchListMatch is the typed request payload for CompanySearch.ListTyped.
 type CompanySearchListMatch struct {
 	CompanyId *string `json:"company_id,omitempty"`
 	Domain *string `json:"domain,omitempty"`
@@ -56,8 +54,7 @@ type Similar struct {
 	SimilarityScore *float64 `json:"similarity_score,omitempty"`
 }
 
-// SimilarListMatch mirrors the similar fields as an all-optional match
-// filter (Go analog of Partial<Similar>).
+// SimilarListMatch is the typed request payload for Similar.ListTyped.
 type SimilarListMatch struct {
 	CompanyId *string `json:"company_id,omitempty"`
 	Domain *string `json:"domain,omitempty"`
