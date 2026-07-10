@@ -53,12 +53,12 @@ func main() {
         "apikey": os.Getenv("COMPANY_ENRICH_APIKEY"),
     })
 
-    // Load a single companyenrichment — the value is the loaded record.
-    companyenrichment, err := client.CompanyEnrichment(nil).Load(nil, nil)
+    // Load a single companyEnrichment — the value is the loaded record.
+    companyEnrichment, err := client.CompanyEnrichment(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(companyenrichment)
+    fmt.Println(companyEnrichment)
 }
 ```
 
@@ -138,13 +138,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-companyenrichment, err := client.CompanyEnrichment(nil).Load(
+companyEnrichment, err := client.CompanyEnrichment(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(companyenrichment) // the returned mock data
+fmt.Println(companyEnrichment) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -254,9 +254,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    companyenrichment, err := client.CompanyEnrichment(nil).Load(nil, nil)
+    companyEnrichment, err := client.CompanyEnrichment(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // companyenrichment is the returned record
+    // companyEnrichment is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -314,7 +314,7 @@ API path: `/v1/similar`
 
 ### CompanyEnrichment
 
-Create an instance: `company_enrichment := client.CompanyEnrichment(nil)`
+Create an instance: `companyEnrichment := client.CompanyEnrichment(nil)`
 
 #### Operations
 
@@ -332,17 +332,17 @@ Create an instance: `company_enrichment := client.CompanyEnrichment(nil)`
 #### Example: Load
 
 ```go
-company_enrichment, err := client.CompanyEnrichment(nil).Load(nil, nil)
+companyEnrichment, err := client.CompanyEnrichment(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(company_enrichment) // the loaded record
+fmt.Println(companyEnrichment) // the loaded record
 ```
 
 
 ### CompanySearch
 
-Create an instance: `company_search := client.CompanySearch(nil)`
+Create an instance: `companySearch := client.CompanySearch(nil)`
 
 #### Operations
 
@@ -365,11 +365,11 @@ Create an instance: `company_search := client.CompanySearch(nil)`
 #### Example: List
 
 ```go
-company_searchs, err := client.CompanySearch(nil).List(nil, nil)
+companySearchs, err := client.CompanySearch(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(company_searchs) // the array of records
+fmt.Println(companySearchs) // the array of records
 ```
 
 

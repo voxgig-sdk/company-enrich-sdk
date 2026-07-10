@@ -99,7 +99,8 @@ same parameters as `Direct()`.
 ## CompanyEnrichmentEntity
 
 ```go
-company_enrichment := client.CompanyEnrichment(nil)
+companyEnrichment := client.CompanyEnrichment(nil)
+fmt.Println(companyEnrichment.GetName()) // "company_enrichment"
 ```
 
 ### Fields
@@ -117,6 +118,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.CompanyEnrichment(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -146,7 +151,8 @@ Return the entity name.
 ## CompanySearchEntity
 
 ```go
-company_search := client.CompanySearch(nil)
+companySearch := client.CompanySearch(nil)
+fmt.Println(companySearch.GetName()) // "company_search"
 ```
 
 ### Fields
@@ -169,6 +175,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.CompanySearch(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -199,6 +209,7 @@ Return the entity name.
 
 ```go
 similar := client.Similar(nil)
+fmt.Println(similar.GetName()) // "similar"
 ```
 
 ### Fields
@@ -222,6 +233,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Similar(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

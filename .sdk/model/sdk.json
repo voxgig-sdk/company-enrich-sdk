@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -558,15 +555,25 @@
           "url": "https://docs.companyenrich.com"
         },
         "description": "The Company Enrich API provides businesses with enriched, actionable insights about companies. It offers endpoints for company enrichment, search, and discovering similar companies, enabling users to make data-driven decisions and streamline their prospecting efforts.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "header",
+          "name": "X-API-Key",
+          "prefix": "",
+          "scheme": "ApiKeyAuth",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.companyenrich.com"
           }
         ],
+        "summary": "The Company Enrich API provides businesses with enriched, actionable insights about companies.",
         "termsOfService": "https://docs.companyenrich.com/terms",
         "title": "Company Enrich API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://companyenrich.com"
       },
       "option": {},
       "target": {
@@ -619,6 +626,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -669,6 +679,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

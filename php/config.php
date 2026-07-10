@@ -21,7 +21,7 @@ class CompanyEnrichConfig
             "options" => [
                 "base" => "https://api.companyenrich.com",
                 "auth" => [
-                    "prefix" => "Bearer",
+                    "prefix" => "",
                 ],
                 "headers" => [
           'content-type' => 'application/json',
