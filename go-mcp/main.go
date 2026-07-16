@@ -37,7 +37,20 @@ func main() {
 	addr := flag.String("addr", ":8080", "listen address for http transport")
 	flag.Parse()
 
-	client := sdk.NewCompanyEnrichSDK(nil)
+	// Configure from the environment: COMPANY_ENRICH_APIKEY carries the API key and
+	// COMPANY_ENRICH_BASE optionally overrides the API base URL (e.g. production).
+	// Both injectable by a secrets vault. Unset -> nil config defaults.
+	var opts map[string]any
+	if apikey := os.Getenv("COMPANY_ENRICH_APIKEY"); apikey != "" {
+		opts = map[string]any{"apikey": apikey}
+	}
+	if base := os.Getenv("COMPANY_ENRICH_BASE"); base != "" {
+		if opts == nil {
+			opts = map[string]any{}
+		}
+		opts["base"] = base
+	}
+	client := sdk.NewCompanyEnrichSDK(opts)
 	server := mcp.NewServer(
 		&mcp.Implementation{
 			Name:    "company-enrich",
