@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- CompanyEnrich SDK exists test
 
 local sdk = require("company-enrich_sdk")
 

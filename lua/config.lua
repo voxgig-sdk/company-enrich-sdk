@@ -1,4 +1,4 @@
--- ProjectName SDK configuration
+-- CompanyEnrich SDK configuration
 
 local function make_config()
   return {
