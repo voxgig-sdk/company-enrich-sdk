@@ -6,14 +6,74 @@ main: kit: entity: company_enrichment: {
 
   fields: [
     {
-      name: "data"
+      name: "company_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "domain"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "email"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "employee_count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "founded_year"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "industry"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "location"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "success"
+      name: "logo_url"
       req: false
-      type: "`$BOOLEAN`"
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "phone"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "revenue"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "social_profiles"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "technologies"
+      req: false
+      type: "`$ARRAY`"
     }
   ]
 
@@ -65,7 +125,7 @@ main: kit: entity: company_enrichment: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

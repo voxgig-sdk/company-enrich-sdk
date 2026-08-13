@@ -7,12 +7,36 @@
 -- edit by hand.
 
 ---@class CompanyEnrichment
----@field data? table
----@field success? boolean
+---@field company_id? string
+---@field description? string
+---@field domain? string
+---@field email? string
+---@field employee_count? number
+---@field founded_year? number
+---@field industry? string
+---@field location? table
+---@field logo_url? string
+---@field name? string
+---@field phone? string
+---@field revenue? string
+---@field social_profiles? table
+---@field technologies? table
 
 ---@class CompanyEnrichmentLoadMatch
----@field data? table
----@field success? boolean
+---@field company_id? string
+---@field description? string
+---@field domain? string
+---@field email? string
+---@field employee_count? number
+---@field founded_year? number
+---@field industry? string
+---@field location? table
+---@field logo_url? string
+---@field name? string
+---@field phone? string
+---@field revenue? string
+---@field social_profiles? table
+---@field technologies? table
 
 ---@class CompanySearch
 ---@field company_id? string

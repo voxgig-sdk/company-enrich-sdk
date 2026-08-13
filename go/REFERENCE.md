@@ -107,8 +107,20 @@ fmt.Println(companyEnrichment.GetName()) // "company_enrichment"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `map[string]any` | No |  |
-| `success` | `bool` | No |  |
+| `company_id` | `string` | No |  |
+| `description` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `email` | `string` | No |  |
+| `employee_count` | `int` | No |  |
+| `founded_year` | `int` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `map[string]any` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `phone` | `string` | No |  |
+| `revenue` | `string` | No |  |
+| `social_profiles` | `map[string]any` | No |  |
+| `technologies` | `[]any` | No |  |
 
 ### Operations
 

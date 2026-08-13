@@ -37,7 +37,7 @@ class SimilarEntity extends CompanyEnrichEntityBase<Similar> {
 
 
 
-  async list(this: any, reqmatch?: SimilarListMatch, ctrl?: Control): Promise<Similar[]> {
+  async list(this: any, reqmatch?: SimilarListMatch, ctrl?: Control): Promise<SimilarEntity[]> {
 
     const utility = this._utility
 

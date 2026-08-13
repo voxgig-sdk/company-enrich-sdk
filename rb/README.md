@@ -36,7 +36,7 @@ client = CompanyEnrichSDK.new({
 
 ```ruby
 begin
-  # load returns the bare CompanyEnrichment record (raises on error).
+  # load returns the ENTITY — call data_get for the CompanyEnrichment record (raises on error).
   companyenrichment = client.CompanyEnrichment.load()
   puts companyenrichment
 rescue => err
@@ -51,9 +51,9 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  companyenrichment = client.CompanyEnrichment.load()
+  companysearchs = client.CompanySearch.list()
 rescue => err
-  warn "load failed: #{err}"
+  warn "list failed: #{err}"
 end
 ```
 
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = CompanyEnrichSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-companyenrichment = client.CompanyEnrichment.load()
-puts companyenrichment
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+companysearch = client.CompanySearch.list()
+puts companysearch
 ```
 
 ### Use a custom fetch function
@@ -241,8 +242,20 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `company_id` |  |
+| `description` |  |
+| `domain` |  |
+| `email` |  |
+| `employee_count` |  |
+| `founded_year` |  |
+| `industry` |  |
+| `location` |  |
+| `logo_url` |  |
+| `name` |  |
+| `phone` |  |
+| `revenue` |  |
+| `social_profiles` |  |
+| `technologies` |  |
 
 Operations: Load.
 
@@ -300,13 +313,25 @@ Create an instance: `company_enrichment = client.CompanyEnrichment`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Hash` |  |
-| `success` | `Boolean` |  |
+| `company_id` | `String` |  |
+| `description` | `String` |  |
+| `domain` | `String` |  |
+| `email` | `String` |  |
+| `employee_count` | `Integer` |  |
+| `founded_year` | `Integer` |  |
+| `industry` | `String` |  |
+| `location` | `Hash` |  |
+| `logo_url` | `String` |  |
+| `name` | `String` |  |
+| `phone` | `String` |  |
+| `revenue` | `String` |  |
+| `social_profiles` | `Hash` |  |
+| `technologies` | `Array` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare CompanyEnrichment record (raises on error).
+# load returns the ENTITY — call data_get for the CompanyEnrichment record (raises on error).
 company_enrichment = client.CompanyEnrichment.load()
 ```
 
@@ -444,15 +469,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-companyenrichment = client.CompanyEnrichment
-companyenrichment.load()
+companysearch = client.CompanySearch
+companysearch.list()
 
-# companyenrichment.data_get now returns the companyenrichment data from the last load
-# companyenrichment.match_get returns the last match criteria
+# companysearch.data_get now returns the companysearch data from the last list
+# companysearch.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

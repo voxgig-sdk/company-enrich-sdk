@@ -26,8 +26,8 @@ import {
 describe('SimilarEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COMPANYENRICH_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COMPANYENRICH_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COMPANY_ENRICH_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COMPANY_ENRICH_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CompanyEnrichSDK.test()
@@ -63,7 +63,7 @@ describe('SimilarEntity', async () => {
     const similar_ref01_ent = client.Similar()
     const similar_ref01_match: any = {}
 
-    const similar_ref01_list = await similar_ref01_ent.list(similar_ref01_match)
+    const similar_ref01_list = (await similar_ref01_ent.list(similar_ref01_match)).map((e: any) => e.data())
 
 
   })

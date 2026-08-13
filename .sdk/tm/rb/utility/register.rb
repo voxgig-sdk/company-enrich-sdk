@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ CompanyEnrichUtility.registrar = ->(u) {
   u.prepare_params = CompanyEnrichUtilities::PrepareParams
   u.prepare_path = CompanyEnrichUtilities::PreparePath
   u.prepare_query = CompanyEnrichUtilities::PrepareQuery
+  u.graphql_body = CompanyEnrichUtilities::GraphqlBody
+  u.graphql_errors = CompanyEnrichUtilities::GraphqlErrors
   u.result_basic = CompanyEnrichUtilities::ResultBasic
   u.result_body = CompanyEnrichUtilities::ResultBody
   u.result_headers = CompanyEnrichUtilities::ResultHeaders

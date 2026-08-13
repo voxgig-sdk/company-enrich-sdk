@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import CompanyEnrichSDK
-from core.error import CompanyEnrichError
-from core.result import CompanyEnrichResult
-from core.response import CompanyEnrichResponse
-from core.spec import CompanyEnrichSpec
-from feature.base_feature import CompanyEnrichBaseFeature
+from projectname_sdk.core.error import CompanyEnrichError
+from projectname_sdk.core.result import CompanyEnrichResult
+from projectname_sdk.core.response import CompanyEnrichResponse
+from projectname_sdk.core.spec import CompanyEnrichSpec
+from projectname_sdk.feature.base_feature import CompanyEnrichBaseFeature
 
 
 def _client():

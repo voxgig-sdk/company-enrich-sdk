@@ -69,12 +69,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-companyenrichment, err := client.CompanyEnrichment(nil).Load(nil, nil)
+companysearchs, err := client.CompanySearch(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = companyenrichment
+_ = companysearchs
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -138,13 +138,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-companyEnrichment, err := client.CompanyEnrichment(nil).Load(
+companySearch, err := client.CompanySearch(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(companyEnrichment) // the returned mock data
+fmt.Println(companySearch) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -267,8 +267,20 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"data"` |  |
-| `"success"` |  |
+| `"company_id"` |  |
+| `"description"` |  |
+| `"domain"` |  |
+| `"email"` |  |
+| `"employee_count"` |  |
+| `"founded_year"` |  |
+| `"industry"` |  |
+| `"location"` |  |
+| `"logo_url"` |  |
+| `"name"` |  |
+| `"phone"` |  |
+| `"revenue"` |  |
+| `"social_profiles"` |  |
+| `"technologies"` |  |
 
 Operations: Load.
 
@@ -326,8 +338,20 @@ Create an instance: `companyEnrichment := client.CompanyEnrichment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `map[string]any` |  |
-| `success` | `bool` |  |
+| `company_id` | `string` |  |
+| `description` | `string` |  |
+| `domain` | `string` |  |
+| `email` | `string` |  |
+| `employee_count` | `int` |  |
+| `founded_year` | `int` |  |
+| `industry` | `string` |  |
+| `location` | `map[string]any` |  |
+| `logo_url` | `string` |  |
+| `name` | `string` |  |
+| `phone` | `string` |  |
+| `revenue` | `string` |  |
+| `social_profiles` | `map[string]any` |  |
+| `technologies` | `[]any` |  |
 
 #### Example: Load
 
@@ -476,15 +500,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-companyenrichment := client.CompanyEnrichment(nil)
-companyenrichment.Load(nil, nil)
+companysearch := client.CompanySearch(nil)
+companysearch.List(nil, nil)
 
-// companyenrichment.Data() now returns the companyenrichment data from the last load
-// companyenrichment.Match() returns the last match criteria
+// companysearch.Data() now returns the companysearch data from the last list
+// companysearch.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

@@ -99,8 +99,20 @@ local company_enrichment = client:CompanyEnrichment(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `table` | No |  |
-| `success` | `boolean` | No |  |
+| `company_id` | `string` | No |  |
+| `description` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `email` | `string` | No |  |
+| `employee_count` | `number` | No |  |
+| `founded_year` | `number` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `table` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `phone` | `string` | No |  |
+| `revenue` | `string` | No |  |
+| `social_profiles` | `table` | No |  |
+| `technologies` | `table` | No |  |
 
 ### Operations
 

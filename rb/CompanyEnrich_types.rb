@@ -10,27 +10,123 @@
 
 # CompanyEnrichment entity data model.
 #
-# @!attribute [rw] data
+# @!attribute [rw] company_id
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] employee_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] founded_year
+#   @return [Integer, nil]
+#
+# @!attribute [rw] industry
+#   @return [String, nil]
+#
+# @!attribute [rw] location
 #   @return [Hash, nil]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] logo_url
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] phone
+#   @return [String, nil]
+#
+# @!attribute [rw] revenue
+#   @return [String, nil]
+#
+# @!attribute [rw] social_profiles
+#   @return [Hash, nil]
+#
+# @!attribute [rw] technologies
+#   @return [Array, nil]
 CompanyEnrichment = Struct.new(
-  :data,
-  :success,
+  :company_id,
+  :description,
+  :domain,
+  :email,
+  :employee_count,
+  :founded_year,
+  :industry,
+  :location,
+  :logo_url,
+  :name,
+  :phone,
+  :revenue,
+  :social_profiles,
+  :technologies,
   keyword_init: true
 )
 
 # Request payload for CompanyEnrichment#load.
 #
-# @!attribute [rw] data
+# @!attribute [rw] company_id
+#   @return [String, nil]
+#
+# @!attribute [rw] description
+#   @return [String, nil]
+#
+# @!attribute [rw] domain
+#   @return [String, nil]
+#
+# @!attribute [rw] email
+#   @return [String, nil]
+#
+# @!attribute [rw] employee_count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] founded_year
+#   @return [Integer, nil]
+#
+# @!attribute [rw] industry
+#   @return [String, nil]
+#
+# @!attribute [rw] location
 #   @return [Hash, nil]
 #
-# @!attribute [rw] success
-#   @return [Boolean, nil]
+# @!attribute [rw] logo_url
+#   @return [String, nil]
+#
+# @!attribute [rw] name
+#   @return [String, nil]
+#
+# @!attribute [rw] phone
+#   @return [String, nil]
+#
+# @!attribute [rw] revenue
+#   @return [String, nil]
+#
+# @!attribute [rw] social_profiles
+#   @return [Hash, nil]
+#
+# @!attribute [rw] technologies
+#   @return [Array, nil]
 CompanyEnrichmentLoadMatch = Struct.new(
-  :data,
-  :success,
+  :company_id,
+  :description,
+  :domain,
+  :email,
+  :employee_count,
+  :founded_year,
+  :industry,
+  :location,
+  :logo_url,
+  :name,
+  :phone,
+  :revenue,
+  :social_profiles,
+  :technologies,
   keyword_init: true
 )
 

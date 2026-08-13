@@ -26,8 +26,8 @@ import {
 describe('CompanySearchEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COMPANYENRICH_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COMPANYENRICH_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COMPANY_ENRICH_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COMPANY_ENRICH_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CompanyEnrichSDK.test()
@@ -63,7 +63,7 @@ describe('CompanySearchEntity', async () => {
     const company_search_ref01_ent = client.CompanySearch()
     const company_search_ref01_match: any = {}
 
-    const company_search_ref01_list = await company_search_ref01_ent.list(company_search_ref01_match)
+    const company_search_ref01_list = (await company_search_ref01_ent.list(company_search_ref01_match)).map((e: any) => e.data())
 
 
   })

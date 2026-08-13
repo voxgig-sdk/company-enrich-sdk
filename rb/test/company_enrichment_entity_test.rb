@@ -26,7 +26,7 @@ class CompanyEnrichmentEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set COMPANYENRICH_TEST_COMPANY_ENRICHMENT_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set COMPANY_ENRICH_TEST_COMPANY_ENRICHMENT_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -74,39 +74,39 @@ def company_enrichment_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["COMPANYENRICH_TEST_COMPANY_ENRICHMENT_ENTID"]
+  entid_env_raw = ENV["COMPANY_ENRICH_TEST_COMPANY_ENRICHMENT_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "COMPANYENRICH_TEST_COMPANY_ENRICHMENT_ENTID" => idmap,
-    "COMPANYENRICH_TEST_LIVE" => "FALSE",
-    "COMPANYENRICH_TEST_EXPLAIN" => "FALSE",
-    "COMPANYENRICH_APIKEY" => "NONE",
+    "COMPANY_ENRICH_TEST_COMPANY_ENRICHMENT_ENTID" => idmap,
+    "COMPANY_ENRICH_TEST_LIVE" => "FALSE",
+    "COMPANY_ENRICH_TEST_EXPLAIN" => "FALSE",
+    "COMPANY_ENRICH_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["COMPANYENRICH_TEST_COMPANY_ENRICHMENT_ENTID"])
+    env["COMPANY_ENRICH_TEST_COMPANY_ENRICHMENT_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["COMPANYENRICH_TEST_LIVE"] == "TRUE"
+  if env["COMPANY_ENRICH_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COMPANYENRICH_APIKEY"],
+        "apikey" => env["COMPANY_ENRICH_APIKEY"],
       },
       extra || {},
     ])
     client = CompanyEnrichSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["COMPANYENRICH_TEST_LIVE"] == "TRUE"
+  live = env["COMPANY_ENRICH_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["COMPANYENRICH_TEST_EXPLAIN"] == "TRUE",
+    explain: env["COMPANY_ENRICH_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

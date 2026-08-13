@@ -43,8 +43,8 @@ class CompanyEnrichTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('COMPANYENRICH_TEST_LIVE');
-        $override = self::getenv('COMPANYENRICH_TEST_OVERRIDE');
+        $live = self::getenv('COMPANY_ENRICH_TEST_LIVE');
+        $override = self::getenv('COMPANY_ENRICH_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class CompanyEnrichTestRunner
             }
         }
 
-        $explain = self::getenv('COMPANYENRICH_TEST_EXPLAIN');
+        $explain = self::getenv('COMPANY_ENRICH_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['COMPANYENRICH_TEST_EXPLAIN'] = $explain;
+            $m['COMPANY_ENRICH_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

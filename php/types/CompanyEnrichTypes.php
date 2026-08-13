@@ -15,15 +15,39 @@ declare(strict_types=1);
 /** CompanyEnrichment entity data model. */
 class CompanyEnrichment
 {
-    public ?array $data = null;
-    public ?bool $success = null;
+    public ?string $company_id = null;
+    public ?string $description = null;
+    public ?string $domain = null;
+    public ?string $email = null;
+    public ?int $employee_count = null;
+    public ?int $founded_year = null;
+    public ?string $industry = null;
+    public ?array $location = null;
+    public ?string $logo_url = null;
+    public ?string $name = null;
+    public ?string $phone = null;
+    public ?string $revenue = null;
+    public ?array $social_profiles = null;
+    public ?array $technologies = null;
 }
 
 /** Request payload for CompanyEnrichment#load. */
 class CompanyEnrichmentLoadMatch
 {
-    public ?array $data = null;
-    public ?bool $success = null;
+    public ?string $company_id = null;
+    public ?string $description = null;
+    public ?string $domain = null;
+    public ?string $email = null;
+    public ?int $employee_count = null;
+    public ?int $founded_year = null;
+    public ?string $industry = null;
+    public ?array $location = null;
+    public ?string $logo_url = null;
+    public ?string $name = null;
+    public ?string $phone = null;
+    public ?string $revenue = null;
+    public ?array $social_profiles = null;
+    public ?array $technologies = null;
 }
 
 /** CompanySearch entity data model. */

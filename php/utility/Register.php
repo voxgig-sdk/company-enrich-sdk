@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ CompanyEnrichUtility::setRegistrar(function (CompanyEnrichUtility $u): void {
     $u->prepare_params = [CompanyEnrichPrepareParams::class, 'call'];
     $u->prepare_path = [CompanyEnrichPreparePath::class, 'call'];
     $u->prepare_query = [CompanyEnrichPrepareQuery::class, 'call'];
+    $u->graphql_body = [CompanyEnrichGraphql::class, 'body'];
+    $u->graphql_errors = [CompanyEnrichGraphql::class, 'errors'];
     $u->result_basic = [CompanyEnrichResultBasic::class, 'call'];
     $u->result_body = [CompanyEnrichResultBody::class, 'call'];
     $u->result_headers = [CompanyEnrichResultHeaders::class, 'call'];

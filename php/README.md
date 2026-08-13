@@ -37,7 +37,7 @@ $client = new CompanyEnrichSDK([
 
 ```php
 try {
-    // load() returns the bare CompanyEnrichment record (throws on error).
+    // load() returns the ENTITY — call data_get() for the CompanyEnrichment record (throws on error).
     $companyenrichment = $client->CompanyEnrichment()->load();
     print_r($companyenrichment);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $companyenrichment = $client->CompanyEnrichment()->load();
+    $companysearchs = $client->CompanySearch()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = CompanyEnrichSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$companyenrichment = $client->CompanyEnrichment()->load();
-print_r($companyenrichment);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$companysearch = $client->CompanySearch()->list();
+print_r($companysearch);
 ```
 
 ### Use a custom fetch function
@@ -229,7 +230,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -251,8 +252,20 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `company_id` |  |
+| `description` |  |
+| `domain` |  |
+| `email` |  |
+| `employee_count` |  |
+| `founded_year` |  |
+| `industry` |  |
+| `location` |  |
+| `logo_url` |  |
+| `name` |  |
+| `phone` |  |
+| `revenue` |  |
+| `social_profiles` |  |
+| `technologies` |  |
 
 Operations: Load.
 
@@ -310,13 +323,25 @@ Create an instance: `$company_enrichment = $client->CompanyEnrichment();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `array` |  |
-| `success` | `bool` |  |
+| `company_id` | `string` |  |
+| `description` | `string` |  |
+| `domain` | `string` |  |
+| `email` | `string` |  |
+| `employee_count` | `int` |  |
+| `founded_year` | `int` |  |
+| `industry` | `string` |  |
+| `location` | `array` |  |
+| `logo_url` | `string` |  |
+| `name` | `string` |  |
+| `phone` | `string` |  |
+| `revenue` | `string` |  |
+| `social_profiles` | `array` |  |
+| `technologies` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare CompanyEnrichment record (throws on error).
+// load() returns the ENTITY — call data_get() for the CompanyEnrichment record (throws on error).
 $company_enrichment = $client->CompanyEnrichment()->load();
 ```
 
@@ -454,15 +479,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$companyenrichment = $client->CompanyEnrichment();
-$companyenrichment->load();
+$companysearch = $client->CompanySearch();
+$companysearch->list();
 
-// $companyenrichment->data_get() now returns the companyenrichment data from the last load
-// $companyenrichment->match_get() returns the last match criteria
+// $companysearch->data_get() now returns the companysearch data from the last list
+// $companysearch->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

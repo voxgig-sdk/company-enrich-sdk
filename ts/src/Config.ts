@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'CompanyEnrich',
   }
 
 
@@ -66,17 +66,101 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "data",
+          "name": "company_id",
           "req": false,
-          "type": "`$OBJECT`",
+          "type": "`$STRING`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "success",
+          "name": "description",
           "req": false,
-          "type": "`$BOOLEAN`",
+          "type": "`$STRING`",
           "index$": 1
+        },
+        {
+          "active": true,
+          "name": "domain",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 2
+        },
+        {
+          "active": true,
+          "name": "email",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 3
+        },
+        {
+          "active": true,
+          "name": "employee_count",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 4
+        },
+        {
+          "active": true,
+          "name": "founded_year",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 5
+        },
+        {
+          "active": true,
+          "name": "industry",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 6
+        },
+        {
+          "active": true,
+          "name": "location",
+          "req": false,
+          "type": "`$OBJECT`",
+          "index$": 7
+        },
+        {
+          "active": true,
+          "name": "logo_url",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 8
+        },
+        {
+          "active": true,
+          "name": "name",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 9
+        },
+        {
+          "active": true,
+          "name": "phone",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 10
+        },
+        {
+          "active": true,
+          "name": "revenue",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 11
+        },
+        {
+          "active": true,
+          "name": "social_profiles",
+          "req": false,
+          "type": "`$OBJECT`",
+          "index$": 12
+        },
+        {
+          "active": true,
+          "name": "technologies",
+          "req": false,
+          "type": "`$ARRAY`",
+          "index$": 13
         }
       ],
       "name": "company_enrichment",
@@ -117,6 +201,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/v1/enrich",
               "parts": [
@@ -132,7 +217,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -271,6 +356,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/v1/search",
               "parts": [
@@ -290,7 +376,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.data`"
               },
               "index$": 0
             }
@@ -399,6 +485,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/v1/similar",
               "parts": [

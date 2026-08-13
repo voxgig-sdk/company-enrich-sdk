@@ -8,12 +8,14 @@ guide: {
   entity: company_enrichment: {
     path: "/v1/enrich": {
       op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
     }
   }
 
   entity: company_search: {
     path: "/v1/search": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
     }
   }
 

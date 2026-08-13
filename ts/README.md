@@ -55,10 +55,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const companyenrichment = await client.CompanyEnrichment().load()
-  console.log(companyenrichment)
+  const companysearchs = await client.CompanySearch().list()
+  console.log(companysearchs)
 } catch (err) {
-  console.error('load failed:', err)
+  console.error('list failed:', err)
 }
 ```
 
@@ -122,9 +122,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CompanyEnrichSDK.test()
 
-const companyenrichment = await client.CompanyEnrichment().load()
-// companyenrichment is a bare entity populated with mock response data
-console.log(companyenrichment)
+const companysearch = await client.CompanySearch().list()
+// companysearch is the entity, populated with mock response data
+// — call companysearch.data() for the record itself
+console.log(companysearch)
 ```
 
 You can also use the instance method:
@@ -139,10 +140,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.CompanyEnrichment()
+const entity = client.CompanySearch()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -295,8 +296,20 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `company_id` |  |
+| `description` |  |
+| `domain` |  |
+| `email` |  |
+| `employee_count` |  |
+| `founded_year` |  |
+| `industry` |  |
+| `location` |  |
+| `logo_url` |  |
+| `name` |  |
+| `phone` |  |
+| `revenue` |  |
+| `social_profiles` |  |
+| `technologies` |  |
 
 Operations: load.
 
@@ -354,8 +367,20 @@ Create an instance: `const company_enrichment = client.CompanyEnrichment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `Record<string, any>` |  |
-| `success` | `boolean` |  |
+| `company_id` | `string` |  |
+| `description` | `string` |  |
+| `domain` | `string` |  |
+| `email` | `string` |  |
+| `employee_count` | `number` |  |
+| `founded_year` | `number` |  |
+| `industry` | `string` |  |
+| `location` | `Record<string, any>` |  |
+| `logo_url` | `string` |  |
+| `name` | `string` |  |
+| `phone` | `string` |  |
+| `revenue` | `string` |  |
+| `social_profiles` | `Record<string, any>` |  |
+| `technologies` | `any[]` |  |
 
 #### Example: Load
 
@@ -487,16 +512,16 @@ import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const companyenrichment = client.CompanyEnrichment()
-await companyenrichment.load()
+const companysearch = client.CompanySearch()
+await companysearch.list()
 
-// companyenrichment.data() now returns the companyenrichment data from the last `load`
-// companyenrichment.match() returns the last match criteria
+// companysearch.data() now returns the companysearch data from the last `list`
+// companysearch.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

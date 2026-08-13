@@ -26,8 +26,8 @@ import {
 describe('CompanyEnrichmentEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COMPANYENRICH_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COMPANYENRICH_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COMPANY_ENRICH_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COMPANY_ENRICH_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CompanyEnrichSDK.test()
@@ -62,7 +62,7 @@ describe('CompanyEnrichmentEntity', async () => {
     // LOAD
     const company_enrichment_ref01_ent = client.CompanyEnrichment()
     const company_enrichment_ref01_match_dt0: any = {}
-    const company_enrichment_ref01_data_dt0 = await company_enrichment_ref01_ent.load(company_enrichment_ref01_match_dt0)
+    const company_enrichment_ref01_data_dt0 = (await company_enrichment_ref01_ent.load(company_enrichment_ref01_match_dt0)).data()
     assert(null != company_enrichment_ref01_data_dt0)
 
 

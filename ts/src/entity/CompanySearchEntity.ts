@@ -37,7 +37,7 @@ class CompanySearchEntity extends CompanyEnrichEntityBase<CompanySearch> {
 
 
 
-  async list(this: any, reqmatch?: CompanySearchListMatch, ctrl?: Control): Promise<CompanySearch[]> {
+  async list(this: any, reqmatch?: CompanySearchListMatch, ctrl?: Control): Promise<CompanySearchEntity[]> {
 
     const utility = this._utility
 

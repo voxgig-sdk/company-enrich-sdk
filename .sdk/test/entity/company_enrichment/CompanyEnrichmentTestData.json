@@ -2,18 +2,54 @@
   "existing": {
     "company_enrichment": {
       "COMPANY_ENRICHMENT00": {
-        "data": {},
-        "success": false,
+        "company_id": "COMPANY01",
+        "description": "s8d",
+        "domain": "s8e",
+        "email": "s8f",
+        "employee_count": "s90",
+        "founded_year": "s91",
+        "industry": "s92",
+        "location": {},
+        "logo_url": "s94",
+        "name": "s95",
+        "phone": "s96",
+        "revenue": "s97",
+        "social_profiles": {},
+        "technologies": [],
         "id": "COMPANY_ENRICHMENT00"
       },
       "COMPANY_ENRICHMENT01": {
-        "data": {},
-        "success": false,
+        "company_id": "COMPANY01",
+        "description": "s119",
+        "domain": "s11a",
+        "email": "s11b",
+        "employee_count": "s11c",
+        "founded_year": "s11d",
+        "industry": "s11e",
+        "location": {},
+        "logo_url": "s120",
+        "name": "s121",
+        "phone": "s122",
+        "revenue": "s123",
+        "social_profiles": {},
+        "technologies": [],
         "id": "COMPANY_ENRICHMENT01"
       },
       "COMPANY_ENRICHMENT02": {
-        "data": {},
-        "success": false,
+        "company_id": "COMPANY01",
+        "description": "s1a5",
+        "domain": "s1a6",
+        "email": "s1a7",
+        "employee_count": "s1a8",
+        "founded_year": "s1a9",
+        "industry": "s1aa",
+        "location": {},
+        "logo_url": "s1ac",
+        "name": "s1ad",
+        "phone": "s1ae",
+        "revenue": "s1af",
+        "social_profiles": {},
+        "technologies": [],
         "id": "COMPANY_ENRICHMENT02"
       }
     }
@@ -21,8 +57,20 @@
   "new": {
     "company_enrichment": {
       "company_enrichment_ref01": {
-        "data": {},
-        "success": false
+        "company_id": "COMPANY01",
+        "description": "s231",
+        "domain": "s232",
+        "email": "s233",
+        "employee_count": "s234",
+        "founded_year": "s235",
+        "industry": "s236",
+        "location": {},
+        "logo_url": "s238",
+        "name": "s239",
+        "phone": "s23a",
+        "revenue": "s23b",
+        "social_profiles": {},
+        "technologies": []
       }
     }
   }

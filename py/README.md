@@ -41,7 +41,7 @@ client = CompanyEnrichSDK({
 
 ### 3. Load a companyenrichment
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -58,10 +58,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    companyenrichment = client.CompanyEnrichment().load()
-    print(companyenrichment)
+    companysearchs = client.CompanySearch().list()
+    print(companysearchs)
 except Exception as err:
-    print(f"load failed: {err}")
+    print(f"list failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = CompanyEnrichSDK.test()
 
-# Entity ops return the bare record and raise on error.
-companyenrichment = client.CompanyEnrichment().load()
-# companyenrichment contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+companysearch = client.CompanySearch().list()
+# companysearch contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -248,8 +249,20 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `company_id` |  |
+| `description` |  |
+| `domain` |  |
+| `email` |  |
+| `employee_count` |  |
+| `founded_year` |  |
+| `industry` |  |
+| `location` |  |
+| `logo_url` |  |
+| `name` |  |
+| `phone` |  |
+| `revenue` |  |
+| `social_profiles` |  |
+| `technologies` |  |
 
 Operations: Load.
 
@@ -307,8 +320,20 @@ Create an instance: `company_enrichment = client.CompanyEnrichment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `dict` |  |
-| `success` | `bool` |  |
+| `company_id` | `str` |  |
+| `description` | `str` |  |
+| `domain` | `str` |  |
+| `email` | `str` |  |
+| `employee_count` | `int` |  |
+| `founded_year` | `int` |  |
+| `industry` | `str` |  |
+| `location` | `dict` |  |
+| `logo_url` | `str` |  |
+| `name` | `str` |  |
+| `phone` | `str` |  |
+| `revenue` | `str` |  |
+| `social_profiles` | `dict` |  |
+| `technologies` | `list` |  |
 
 #### Example: Load
 
@@ -447,15 +472,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-companyenrichment = client.CompanyEnrichment()
-companyenrichment.load()
+companysearch = client.CompanySearch()
+companysearch.list()
 
-# companyenrichment.data_get() now returns the companyenrichment data from the last load
-# companyenrichment.match_get() returns the last match criteria
+# companysearch.data_get() now returns the companysearch data from the last list
+# companysearch.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -101,8 +101,20 @@ $company_enrichment = $client->CompanyEnrichment();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `array` | No |  |
-| `success` | `bool` | No |  |
+| `company_id` | `string` | No |  |
+| `description` | `string` | No |  |
+| `domain` | `string` | No |  |
+| `email` | `string` | No |  |
+| `employee_count` | `int` | No |  |
+| `founded_year` | `int` | No |  |
+| `industry` | `string` | No |  |
+| `location` | `array` | No |  |
+| `logo_url` | `string` | No |  |
+| `name` | `string` | No |  |
+| `phone` | `string` | No |  |
+| `revenue` | `string` | No |  |
+| `social_profiles` | `array` | No |  |
+| `technologies` | `array` | No |  |
 
 ### Operations
 

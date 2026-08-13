@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local companyenrichment, err = client:CompanyEnrichment():load()
+local companysearchs, err = client:CompanySearch():list()
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:CompanyEnrichment():load()
+local result, err = client:CompanySearch():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -233,8 +233,20 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `data` |  |
-| `success` |  |
+| `company_id` |  |
+| `description` |  |
+| `domain` |  |
+| `email` |  |
+| `employee_count` |  |
+| `founded_year` |  |
+| `industry` |  |
+| `location` |  |
+| `logo_url` |  |
+| `name` |  |
+| `phone` |  |
+| `revenue` |  |
+| `social_profiles` |  |
+| `technologies` |  |
 
 Operations: Load.
 
@@ -292,8 +304,20 @@ Create an instance: `local company_enrichment = client:CompanyEnrichment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `data` | `table` |  |
-| `success` | `boolean` |  |
+| `company_id` | `string` |  |
+| `description` | `string` |  |
+| `domain` | `string` |  |
+| `email` | `string` |  |
+| `employee_count` | `number` |  |
+| `founded_year` | `number` |  |
+| `industry` | `string` |  |
+| `location` | `table` |  |
+| `logo_url` | `string` |  |
+| `name` | `string` |  |
+| `phone` | `string` |  |
+| `revenue` | `string` |  |
+| `social_profiles` | `table` |  |
+| `technologies` | `table` |  |
 
 #### Example: Load
 
@@ -433,15 +457,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local companyenrichment = client:CompanyEnrichment()
-companyenrichment:load()
+local companysearch = client:CompanySearch()
+companysearch:list()
 
--- companyenrichment:data_get() now returns the companyenrichment data from the last load
--- companyenrichment:match_get() returns the last match criteria
+-- companysearch:data_get() now returns the companysearch data from the last list
+-- companysearch:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

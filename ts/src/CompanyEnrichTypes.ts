@@ -6,13 +6,37 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface CompanyEnrichment {
-  data?: Record<string, any>
-  success?: boolean
+  company_id?: string
+  description?: string
+  domain?: string
+  email?: string
+  employee_count?: number
+  founded_year?: number
+  industry?: string
+  location?: Record<string, any>
+  logo_url?: string
+  name?: string
+  phone?: string
+  revenue?: string
+  social_profiles?: Record<string, any>
+  technologies?: any[]
 }
 
 export interface CompanyEnrichmentLoadMatch {
-  data?: Record<string, any>
-  success?: boolean
+  company_id?: string
+  description?: string
+  domain?: string
+  email?: string
+  employee_count?: number
+  founded_year?: number
+  industry?: string
+  location?: Record<string, any>
+  logo_url?: string
+  name?: string
+  phone?: string
+  revenue?: string
+  social_profiles?: Record<string, any>
+  technologies?: any[]
 }
 
 export interface CompanySearch {

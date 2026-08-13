@@ -96,8 +96,20 @@ company_enrichment = client.CompanyEnrichment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `data` | `dict` | No |  |
-| `success` | `bool` | No |  |
+| `company_id` | `str` | No |  |
+| `description` | `str` | No |  |
+| `domain` | `str` | No |  |
+| `email` | `str` | No |  |
+| `employee_count` | `int` | No |  |
+| `founded_year` | `int` | No |  |
+| `industry` | `str` | No |  |
+| `location` | `dict` | No |  |
+| `logo_url` | `str` | No |  |
+| `name` | `str` | No |  |
+| `phone` | `str` | No |  |
+| `revenue` | `str` | No |  |
+| `social_profiles` | `dict` | No |  |
+| `technologies` | `list` | No |  |
 
 ### Operations
 

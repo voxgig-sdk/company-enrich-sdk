@@ -66,16 +66,16 @@ function company_search_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "COMPANYENRICH_TEST_COMPANY_SEARCH_ENTID" => [],
-        "COMPANYENRICH_TEST_LIVE" => "FALSE",
-        "COMPANYENRICH_APIKEY" => "NONE",
+        "COMPANY_ENRICH_TEST_COMPANY_SEARCH_ENTID" => [],
+        "COMPANY_ENRICH_TEST_LIVE" => "FALSE",
+        "COMPANY_ENRICH_APIKEY" => "NONE",
     ]);
 
-    $live = $env["COMPANYENRICH_TEST_LIVE"] === "TRUE";
+    $live = $env["COMPANY_ENRICH_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["COMPANYENRICH_APIKEY"],
+            "apikey" => $env["COMPANY_ENRICH_APIKEY"],
         ];
         $client = new CompanyEnrichSDK($merged_opts);
         return [

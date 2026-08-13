@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# CompanyEnrich SDK exists test
 
 import pytest
 from companyenrich_sdk import CompanyEnrichSDK
