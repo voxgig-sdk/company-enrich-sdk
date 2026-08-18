@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from companyenrich_sdk.config import make_config
+from companyenrich_sdk.config import shared_config
 from companyenrich_sdk.features import _make_feature
 from companyenrich_sdk.core.control import CompanyEnrichControl
 from companyenrich_sdk.core.error import CompanyEnrichError
@@ -24,7 +24,7 @@ from companyenrich_sdk.core.spec import CompanyEnrichSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

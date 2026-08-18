@@ -28,7 +28,7 @@ class CompanyEnrichSDK
     utility = CompanyEnrichUtility.new
     @_utility = utility
 
-    config = CompanyEnrichConfig.make_config
+    config = CompanyEnrichConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

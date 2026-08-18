@@ -40,7 +40,7 @@ class CompanySearchEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = CompanyEnrichConfig::make_config();
+        $cfg = CompanyEnrichConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = CompanyEnrichSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

@@ -40,7 +40,7 @@ class CompanyEnrichSDK
         $utility = new CompanyEnrichUtility();
         $this->_utility = $utility;
 
-        $config = CompanyEnrichConfig::make_config();
+        $config = CompanyEnrichConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

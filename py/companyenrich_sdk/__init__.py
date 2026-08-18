@@ -23,8 +23,8 @@ class CompanyEnrichSDK:
         utility = CompanyEnrichUtility()
         self._utility = utility
 
-        from companyenrich_sdk.config import make_config
-        config = make_config()
+        from companyenrich_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
