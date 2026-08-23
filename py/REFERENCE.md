@@ -96,20 +96,20 @@ company_enrichment = client.CompanyEnrichment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | `str` | No |  |
-| `description` | `str` | No |  |
-| `domain` | `str` | No |  |
-| `email` | `str` | No |  |
-| `employee_count` | `int` | No |  |
-| `founded_year` | `int` | No |  |
-| `industry` | `str` | No |  |
+| `company_id` | `str` | No | Unique identifier for the company |
+| `description` | `str` | No | Company description |
+| `domain` | `str` | No | Company website domain |
+| `email` | `str` | No | Company contact email |
+| `employee_count` | `int` | No | Number of employees |
+| `founded_year` | `int` | No | Year the company was founded |
+| `industry` | `str` | No | Primary industry |
 | `location` | `dict` | No |  |
-| `logo_url` | `str` | No |  |
-| `name` | `str` | No |  |
-| `phone` | `str` | No |  |
-| `revenue` | `str` | No |  |
+| `logo_url` | `str` | No | URL to company logo |
+| `name` | `str` | No | Company name |
+| `phone` | `str` | No | Company phone number |
+| `revenue` | `str` | No | Estimated revenue range |
 | `social_profiles` | `dict` | No |  |
-| `technologies` | `list` | No |  |
+| `technologies` | `list` | No | List of technologies used by the company |
 
 ### Operations
 
@@ -164,7 +164,7 @@ company_search = client.CompanySearch()
 | `domain` | `str` | No |  |
 | `employee_count` | `int` | No |  |
 | `industry` | `str` | No |  |
-| `location` | `str` | No |  |
+| `location` | `str` | No | Location summary |
 | `logo_url` | `str` | No |  |
 | `name` | `str` | No |  |
 
@@ -226,7 +226,7 @@ similar = client.Similar()
 | `location` | `str` | No |  |
 | `logo_url` | `str` | No |  |
 | `name` | `str` | No |  |
-| `similarity_score` | `float` | No |  |
+| `similarity_score` | `float` | No | Similarity score (0-1) |
 
 ### Operations
 

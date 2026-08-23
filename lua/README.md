@@ -233,20 +233,20 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `company_id` |  |
-| `description` |  |
-| `domain` |  |
-| `email` |  |
-| `employee_count` |  |
-| `founded_year` |  |
-| `industry` |  |
+| `company_id` | Unique identifier for the company |
+| `description` | Company description |
+| `domain` | Company website domain |
+| `email` | Company contact email |
+| `employee_count` | Number of employees |
+| `founded_year` | Year the company was founded |
+| `industry` | Primary industry |
 | `location` |  |
-| `logo_url` |  |
-| `name` |  |
-| `phone` |  |
-| `revenue` |  |
+| `logo_url` | URL to company logo |
+| `name` | Company name |
+| `phone` | Company phone number |
+| `revenue` | Estimated revenue range |
 | `social_profiles` |  |
-| `technologies` |  |
+| `technologies` | List of technologies used by the company |
 
 Operations: Load.
 
@@ -260,7 +260,7 @@ API path: `/v1/enrich`
 | `domain` |  |
 | `employee_count` |  |
 | `industry` |  |
-| `location` |  |
+| `location` | Location summary |
 | `logo_url` |  |
 | `name` |  |
 
@@ -279,7 +279,7 @@ API path: `/v1/search`
 | `location` |  |
 | `logo_url` |  |
 | `name` |  |
-| `similarity_score` |  |
+| `similarity_score` | Similarity score (0-1) |
 
 Operations: List.
 
@@ -304,20 +304,20 @@ Create an instance: `local company_enrichment = client:CompanyEnrichment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `company_id` | `string` |  |
-| `description` | `string` |  |
-| `domain` | `string` |  |
-| `email` | `string` |  |
-| `employee_count` | `number` |  |
-| `founded_year` | `number` |  |
-| `industry` | `string` |  |
+| `company_id` | `string` | Unique identifier for the company |
+| `description` | `string` | Company description |
+| `domain` | `string` | Company website domain |
+| `email` | `string` | Company contact email |
+| `employee_count` | `number` | Number of employees |
+| `founded_year` | `number` | Year the company was founded |
+| `industry` | `string` | Primary industry |
 | `location` | `table` |  |
-| `logo_url` | `string` |  |
-| `name` | `string` |  |
-| `phone` | `string` |  |
-| `revenue` | `string` |  |
+| `logo_url` | `string` | URL to company logo |
+| `name` | `string` | Company name |
+| `phone` | `string` | Company phone number |
+| `revenue` | `string` | Estimated revenue range |
 | `social_profiles` | `table` |  |
-| `technologies` | `table` |  |
+| `technologies` | `table` | List of technologies used by the company |
 
 #### Example: Load
 
@@ -344,7 +344,7 @@ Create an instance: `local company_search = client:CompanySearch(nil)`
 | `domain` | `string` |  |
 | `employee_count` | `number` |  |
 | `industry` | `string` |  |
-| `location` | `string` |  |
+| `location` | `string` | Location summary |
 | `logo_url` | `string` |  |
 | `name` | `string` |  |
 
@@ -376,7 +376,7 @@ Create an instance: `local similar = client:Similar(nil)`
 | `location` | `string` |  |
 | `logo_url` | `string` |  |
 | `name` | `string` |  |
-| `similarity_score` | `number` |  |
+| `similarity_score` | `number` | Similarity score (0-1) |
 
 #### Example: List
 

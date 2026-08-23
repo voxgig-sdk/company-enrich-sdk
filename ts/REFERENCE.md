@@ -141,20 +141,20 @@ const company_enrichment = client.CompanyEnrichment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | `string` | No |  |
-| `description` | `string` | No |  |
-| `domain` | `string` | No |  |
-| `email` | `string` | No |  |
-| `employee_count` | `number` | No |  |
-| `founded_year` | `number` | No |  |
-| `industry` | `string` | No |  |
+| `company_id` | `string` | No | Unique identifier for the company |
+| `description` | `string` | No | Company description |
+| `domain` | `string` | No | Company website domain |
+| `email` | `string` | No | Company contact email |
+| `employee_count` | `number` | No | Number of employees |
+| `founded_year` | `number` | No | Year the company was founded |
+| `industry` | `string` | No | Primary industry |
 | `location` | `Record<string, any>` | No |  |
-| `logo_url` | `string` | No |  |
-| `name` | `string` | No |  |
-| `phone` | `string` | No |  |
-| `revenue` | `string` | No |  |
+| `logo_url` | `string` | No | URL to company logo |
+| `name` | `string` | No | Company name |
+| `phone` | `string` | No | Company phone number |
+| `revenue` | `string` | No | Estimated revenue range |
 | `social_profiles` | `Record<string, any>` | No |  |
-| `technologies` | `any[]` | No |  |
+| `technologies` | `any[]` | No | List of technologies used by the company |
 
 ### Operations
 
@@ -208,7 +208,7 @@ const company_search = client.CompanySearch()
 | `domain` | `string` | No |  |
 | `employee_count` | `number` | No |  |
 | `industry` | `string` | No |  |
-| `location` | `string` | No |  |
+| `location` | `string` | No | Location summary |
 | `logo_url` | `string` | No |  |
 | `name` | `string` | No |  |
 
@@ -267,7 +267,7 @@ const similar = client.Similar()
 | `location` | `string` | No |  |
 | `logo_url` | `string` | No |  |
 | `name` | `string` | No |  |
-| `similarity_score` | `number` | No |  |
+| `similarity_score` | `number` | No | Similarity score (0-1) |
 
 ### Operations
 

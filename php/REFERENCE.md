@@ -101,20 +101,20 @@ $company_enrichment = $client->CompanyEnrichment();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | `string` | No |  |
-| `description` | `string` | No |  |
-| `domain` | `string` | No |  |
-| `email` | `string` | No |  |
-| `employee_count` | `int` | No |  |
-| `founded_year` | `int` | No |  |
-| `industry` | `string` | No |  |
+| `company_id` | `string` | No | Unique identifier for the company |
+| `description` | `string` | No | Company description |
+| `domain` | `string` | No | Company website domain |
+| `email` | `string` | No | Company contact email |
+| `employee_count` | `int` | No | Number of employees |
+| `founded_year` | `int` | No | Year the company was founded |
+| `industry` | `string` | No | Primary industry |
 | `location` | `array` | No |  |
-| `logo_url` | `string` | No |  |
-| `name` | `string` | No |  |
-| `phone` | `string` | No |  |
-| `revenue` | `string` | No |  |
+| `logo_url` | `string` | No | URL to company logo |
+| `name` | `string` | No | Company name |
+| `phone` | `string` | No | Company phone number |
+| `revenue` | `string` | No | Estimated revenue range |
 | `social_profiles` | `array` | No |  |
-| `technologies` | `array` | No |  |
+| `technologies` | `array` | No | List of technologies used by the company |
 
 ### Operations
 
@@ -170,7 +170,7 @@ $company_search = $client->CompanySearch();
 | `domain` | `string` | No |  |
 | `employee_count` | `int` | No |  |
 | `industry` | `string` | No |  |
-| `location` | `string` | No |  |
+| `location` | `string` | No | Location summary |
 | `logo_url` | `string` | No |  |
 | `name` | `string` | No |  |
 
@@ -231,7 +231,7 @@ $similar = $client->Similar();
 | `location` | `string` | No |  |
 | `logo_url` | `string` | No |  |
 | `name` | `string` | No |  |
-| `similarity_score` | `float` | No |  |
+| `similarity_score` | `float` | No | Similarity score (0-1) |
 
 ### Operations
 

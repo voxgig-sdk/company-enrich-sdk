@@ -1,6 +1,6 @@
-# Entity: similar
+# Entity: company_enrichment
 
-main: kit: entity: similar: {
+main: kit: entity: company_enrichment: {
 
   alias: field: {}
 
@@ -8,49 +8,91 @@ main: kit: entity: similar: {
     {
       name: "company_id"
       req: false
+      short: "Unique identifier for the company"
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      short: "Company description"
       type: "`$STRING`"
     }
     {
       name: "domain"
       req: false
+      short: "Company website domain"
+      type: "`$STRING`"
+    }
+    {
+      name: "email"
+      req: false
+      short: "Company contact email"
       type: "`$STRING`"
     }
     {
       name: "employee_count"
       req: false
+      short: "Number of employees"
+      type: "`$INTEGER`"
+    }
+    {
+      name: "founded_year"
+      req: false
+      short: "Year the company was founded"
       type: "`$INTEGER`"
     }
     {
       name: "industry"
       req: false
+      short: "Primary industry"
       type: "`$STRING`"
     }
     {
       name: "location"
       req: false
-      type: "`$STRING`"
+      type: "`$OBJECT`"
     }
     {
       name: "logo_url"
       req: false
+      short: "URL to company logo"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "Company name"
       type: "`$STRING`"
     }
     {
-      name: "similarity_score"
+      name: "phone"
       req: false
-      type: "`$NUMBER`"
+      short: "Company phone number"
+      type: "`$STRING`"
+    }
+    {
+      name: "revenue"
+      req: false
+      short: "Estimated revenue range"
+      type: "`$STRING`"
+    }
+    {
+      name: "social_profiles"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "technologies"
+      req: false
+      short: "List of technologies used by the company"
+      type: "`$ARRAY`"
     }
   ]
 
-  name: "similar"
+  name: "company_enrichment"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           args: {
@@ -71,31 +113,31 @@ main: kit: entity: similar: {
                 type: "`$STRING`"
               }
               {
-                example: 10
+                example: "Example Inc"
                 kind: "query"
-                name: "limit"
-                orig: "limit"
+                name: "name"
+                orig: "name"
                 reqd: false
-                type: "`$INTEGER`"
+                type: "`$STRING`"
               }
             ]
           }
           method: "GET"
-          orig: "/v1/similar"
+          orig: "/v1/enrich"
           parts: [
             "v1"
-            "similar"
+            "enrich"
           ]
           select: {
             exist: [
               "company_id"
               "domain"
-              "limit"
+              "name"
             ]
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.data`"
           }
         }
       ]

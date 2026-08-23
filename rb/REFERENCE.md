@@ -102,20 +102,20 @@ company_enrichment = client.CompanyEnrichment
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `company_id` | `String` | No |  |
-| `description` | `String` | No |  |
-| `domain` | `String` | No |  |
-| `email` | `String` | No |  |
-| `employee_count` | `Integer` | No |  |
-| `founded_year` | `Integer` | No |  |
-| `industry` | `String` | No |  |
+| `company_id` | `String` | No | Unique identifier for the company |
+| `description` | `String` | No | Company description |
+| `domain` | `String` | No | Company website domain |
+| `email` | `String` | No | Company contact email |
+| `employee_count` | `Integer` | No | Number of employees |
+| `founded_year` | `Integer` | No | Year the company was founded |
+| `industry` | `String` | No | Primary industry |
 | `location` | `Hash` | No |  |
-| `logo_url` | `String` | No |  |
-| `name` | `String` | No |  |
-| `phone` | `String` | No |  |
-| `revenue` | `String` | No |  |
+| `logo_url` | `String` | No | URL to company logo |
+| `name` | `String` | No | Company name |
+| `phone` | `String` | No | Company phone number |
+| `revenue` | `String` | No | Estimated revenue range |
 | `social_profiles` | `Hash` | No |  |
-| `technologies` | `Array` | No |  |
+| `technologies` | `Array` | No | List of technologies used by the company |
 
 ### Operations
 
@@ -171,7 +171,7 @@ company_search = client.CompanySearch
 | `domain` | `String` | No |  |
 | `employee_count` | `Integer` | No |  |
 | `industry` | `String` | No |  |
-| `location` | `String` | No |  |
+| `location` | `String` | No | Location summary |
 | `logo_url` | `String` | No |  |
 | `name` | `String` | No |  |
 
@@ -232,7 +232,7 @@ similar = client.Similar
 | `location` | `String` | No |  |
 | `logo_url` | `String` | No |  |
 | `name` | `String` | No |  |
-| `similarity_score` | `Float` | No |  |
+| `similarity_score` | `Float` | No | Similarity score (0-1) |
 
 ### Operations
 

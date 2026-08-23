@@ -1,6 +1,6 @@
-# Entity: company_enrichment
+# Entity: similar
 
-main: kit: entity: company_enrichment: {
+main: kit: entity: similar: {
 
   alias: field: {}
 
@@ -11,27 +11,12 @@ main: kit: entity: company_enrichment: {
       type: "`$STRING`"
     }
     {
-      name: "description"
-      req: false
-      type: "`$STRING`"
-    }
-    {
       name: "domain"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "email"
-      req: false
-      type: "`$STRING`"
-    }
-    {
       name: "employee_count"
-      req: false
-      type: "`$INTEGER`"
-    }
-    {
-      name: "founded_year"
       req: false
       type: "`$INTEGER`"
     }
@@ -43,7 +28,7 @@ main: kit: entity: company_enrichment: {
     {
       name: "location"
       req: false
-      type: "`$OBJECT`"
+      type: "`$STRING`"
     }
     {
       name: "logo_url"
@@ -56,31 +41,17 @@ main: kit: entity: company_enrichment: {
       type: "`$STRING`"
     }
     {
-      name: "phone"
+      name: "similarity_score"
       req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "revenue"
-      req: false
-      type: "`$STRING`"
-    }
-    {
-      name: "social_profiles"
-      req: false
-      type: "`$OBJECT`"
-    }
-    {
-      name: "technologies"
-      req: false
-      type: "`$ARRAY`"
+      short: "Similarity score (0-1)"
+      type: "`$NUMBER`"
     }
   ]
 
-  name: "company_enrichment"
+  name: "similar"
   op: {
-    load: {
-      name: "load"
+    list: {
+      name: "list"
       points: [
         {
           args: {
@@ -101,31 +72,31 @@ main: kit: entity: company_enrichment: {
                 type: "`$STRING`"
               }
               {
-                example: "Example Inc"
+                example: 10
                 kind: "query"
-                name: "name"
-                orig: "name"
+                name: "limit"
+                orig: "limit"
                 reqd: false
-                type: "`$STRING`"
+                type: "`$INTEGER`"
               }
             ]
           }
           method: "GET"
-          orig: "/v1/enrich"
+          orig: "/v1/similar"
           parts: [
             "v1"
-            "enrich"
+            "similar"
           ]
           select: {
             exist: [
               "company_id"
               "domain"
-              "name"
+              "limit"
             ]
           }
           transform: {
             req: "`reqdata`"
-            res: "`body.data`"
+            res: "`body`"
           }
         }
       ]

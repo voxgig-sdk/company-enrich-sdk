@@ -242,20 +242,20 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `company_id` |  |
-| `description` |  |
-| `domain` |  |
-| `email` |  |
-| `employee_count` |  |
-| `founded_year` |  |
-| `industry` |  |
+| `company_id` | Unique identifier for the company |
+| `description` | Company description |
+| `domain` | Company website domain |
+| `email` | Company contact email |
+| `employee_count` | Number of employees |
+| `founded_year` | Year the company was founded |
+| `industry` | Primary industry |
 | `location` |  |
-| `logo_url` |  |
-| `name` |  |
-| `phone` |  |
-| `revenue` |  |
+| `logo_url` | URL to company logo |
+| `name` | Company name |
+| `phone` | Company phone number |
+| `revenue` | Estimated revenue range |
 | `social_profiles` |  |
-| `technologies` |  |
+| `technologies` | List of technologies used by the company |
 
 Operations: Load.
 
@@ -269,7 +269,7 @@ API path: `/v1/enrich`
 | `domain` |  |
 | `employee_count` |  |
 | `industry` |  |
-| `location` |  |
+| `location` | Location summary |
 | `logo_url` |  |
 | `name` |  |
 
@@ -288,7 +288,7 @@ API path: `/v1/search`
 | `location` |  |
 | `logo_url` |  |
 | `name` |  |
-| `similarity_score` |  |
+| `similarity_score` | Similarity score (0-1) |
 
 Operations: List.
 
@@ -313,20 +313,20 @@ Create an instance: `company_enrichment = client.CompanyEnrichment`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `company_id` | `String` |  |
-| `description` | `String` |  |
-| `domain` | `String` |  |
-| `email` | `String` |  |
-| `employee_count` | `Integer` |  |
-| `founded_year` | `Integer` |  |
-| `industry` | `String` |  |
+| `company_id` | `String` | Unique identifier for the company |
+| `description` | `String` | Company description |
+| `domain` | `String` | Company website domain |
+| `email` | `String` | Company contact email |
+| `employee_count` | `Integer` | Number of employees |
+| `founded_year` | `Integer` | Year the company was founded |
+| `industry` | `String` | Primary industry |
 | `location` | `Hash` |  |
-| `logo_url` | `String` |  |
-| `name` | `String` |  |
-| `phone` | `String` |  |
-| `revenue` | `String` |  |
+| `logo_url` | `String` | URL to company logo |
+| `name` | `String` | Company name |
+| `phone` | `String` | Company phone number |
+| `revenue` | `String` | Estimated revenue range |
 | `social_profiles` | `Hash` |  |
-| `technologies` | `Array` |  |
+| `technologies` | `Array` | List of technologies used by the company |
 
 #### Example: Load
 
@@ -354,7 +354,7 @@ Create an instance: `company_search = client.CompanySearch`
 | `domain` | `String` |  |
 | `employee_count` | `Integer` |  |
 | `industry` | `String` |  |
-| `location` | `String` |  |
+| `location` | `String` | Location summary |
 | `logo_url` | `String` |  |
 | `name` | `String` |  |
 
@@ -387,7 +387,7 @@ Create an instance: `similar = client.Similar`
 | `location` | `String` |  |
 | `logo_url` | `String` |  |
 | `name` | `String` |  |
-| `similarity_score` | `Float` |  |
+| `similarity_score` | `Float` | Similarity score (0-1) |
 
 #### Example: List
 

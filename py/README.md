@@ -249,20 +249,20 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `company_id` |  |
-| `description` |  |
-| `domain` |  |
-| `email` |  |
-| `employee_count` |  |
-| `founded_year` |  |
-| `industry` |  |
+| `company_id` | Unique identifier for the company |
+| `description` | Company description |
+| `domain` | Company website domain |
+| `email` | Company contact email |
+| `employee_count` | Number of employees |
+| `founded_year` | Year the company was founded |
+| `industry` | Primary industry |
 | `location` |  |
-| `logo_url` |  |
-| `name` |  |
-| `phone` |  |
-| `revenue` |  |
+| `logo_url` | URL to company logo |
+| `name` | Company name |
+| `phone` | Company phone number |
+| `revenue` | Estimated revenue range |
 | `social_profiles` |  |
-| `technologies` |  |
+| `technologies` | List of technologies used by the company |
 
 Operations: Load.
 
@@ -276,7 +276,7 @@ API path: `/v1/enrich`
 | `domain` |  |
 | `employee_count` |  |
 | `industry` |  |
-| `location` |  |
+| `location` | Location summary |
 | `logo_url` |  |
 | `name` |  |
 
@@ -295,7 +295,7 @@ API path: `/v1/search`
 | `location` |  |
 | `logo_url` |  |
 | `name` |  |
-| `similarity_score` |  |
+| `similarity_score` | Similarity score (0-1) |
 
 Operations: List.
 
@@ -320,20 +320,20 @@ Create an instance: `company_enrichment = client.CompanyEnrichment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `company_id` | `str` |  |
-| `description` | `str` |  |
-| `domain` | `str` |  |
-| `email` | `str` |  |
-| `employee_count` | `int` |  |
-| `founded_year` | `int` |  |
-| `industry` | `str` |  |
+| `company_id` | `str` | Unique identifier for the company |
+| `description` | `str` | Company description |
+| `domain` | `str` | Company website domain |
+| `email` | `str` | Company contact email |
+| `employee_count` | `int` | Number of employees |
+| `founded_year` | `int` | Year the company was founded |
+| `industry` | `str` | Primary industry |
 | `location` | `dict` |  |
-| `logo_url` | `str` |  |
-| `name` | `str` |  |
-| `phone` | `str` |  |
-| `revenue` | `str` |  |
+| `logo_url` | `str` | URL to company logo |
+| `name` | `str` | Company name |
+| `phone` | `str` | Company phone number |
+| `revenue` | `str` | Estimated revenue range |
 | `social_profiles` | `dict` |  |
-| `technologies` | `list` |  |
+| `technologies` | `list` | List of technologies used by the company |
 
 #### Example: Load
 
@@ -360,7 +360,7 @@ Create an instance: `company_search = client.CompanySearch()`
 | `domain` | `str` |  |
 | `employee_count` | `int` |  |
 | `industry` | `str` |  |
-| `location` | `str` |  |
+| `location` | `str` | Location summary |
 | `logo_url` | `str` |  |
 | `name` | `str` |  |
 
@@ -392,7 +392,7 @@ Create an instance: `similar = client.Similar()`
 | `location` | `str` |  |
 | `logo_url` | `str` |  |
 | `name` | `str` |  |
-| `similarity_score` | `float` |  |
+| `similarity_score` | `float` | Similarity score (0-1) |
 
 #### Example: List
 

@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'CompanyEnrich',
+        slug: "company-enrich",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -66,30 +77,37 @@ class Config {
       "fields": [
         {
           "name": "company_id",
+          "short": "Unique identifier for the company",
           "type": "`$STRING`"
         },
         {
           "name": "description",
+          "short": "Company description",
           "type": "`$STRING`"
         },
         {
           "name": "domain",
+          "short": "Company website domain",
           "type": "`$STRING`"
         },
         {
           "name": "email",
+          "short": "Company contact email",
           "type": "`$STRING`"
         },
         {
           "name": "employee_count",
+          "short": "Number of employees",
           "type": "`$INTEGER`"
         },
         {
           "name": "founded_year",
+          "short": "Year the company was founded",
           "type": "`$INTEGER`"
         },
         {
           "name": "industry",
+          "short": "Primary industry",
           "type": "`$STRING`"
         },
         {
@@ -98,18 +116,22 @@ class Config {
         },
         {
           "name": "logo_url",
+          "short": "URL to company logo",
           "type": "`$STRING`"
         },
         {
           "name": "name",
+          "short": "Company name",
           "type": "`$STRING`"
         },
         {
           "name": "phone",
+          "short": "Company phone number",
           "type": "`$STRING`"
         },
         {
           "name": "revenue",
+          "short": "Estimated revenue range",
           "type": "`$STRING`"
         },
         {
@@ -118,6 +140,7 @@ class Config {
         },
         {
           "name": "technologies",
+          "short": "List of technologies used by the company",
           "type": "`$ARRAY`"
         }
       ],
@@ -198,6 +221,7 @@ class Config {
         },
         {
           "name": "location",
+          "short": "Location summary",
           "type": "`$STRING`"
         },
         {
@@ -331,6 +355,7 @@ class Config {
         },
         {
           "name": "similarity_score",
+          "short": "Similarity score (0-1)",
           "type": "`$NUMBER`"
         }
       ],

@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -296,20 +296,20 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `company_id` |  |
-| `description` |  |
-| `domain` |  |
-| `email` |  |
-| `employee_count` |  |
-| `founded_year` |  |
-| `industry` |  |
+| `company_id` | Unique identifier for the company |
+| `description` | Company description |
+| `domain` | Company website domain |
+| `email` | Company contact email |
+| `employee_count` | Number of employees |
+| `founded_year` | Year the company was founded |
+| `industry` | Primary industry |
 | `location` |  |
-| `logo_url` |  |
-| `name` |  |
-| `phone` |  |
-| `revenue` |  |
+| `logo_url` | URL to company logo |
+| `name` | Company name |
+| `phone` | Company phone number |
+| `revenue` | Estimated revenue range |
 | `social_profiles` |  |
-| `technologies` |  |
+| `technologies` | List of technologies used by the company |
 
 Operations: load.
 
@@ -323,7 +323,7 @@ API path: `/v1/enrich`
 | `domain` |  |
 | `employee_count` |  |
 | `industry` |  |
-| `location` |  |
+| `location` | Location summary |
 | `logo_url` |  |
 | `name` |  |
 
@@ -342,7 +342,7 @@ API path: `/v1/search`
 | `location` |  |
 | `logo_url` |  |
 | `name` |  |
-| `similarity_score` |  |
+| `similarity_score` | Similarity score (0-1) |
 
 Operations: list.
 
@@ -367,20 +367,20 @@ Create an instance: `const company_enrichment = client.CompanyEnrichment()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `company_id` | `string` |  |
-| `description` | `string` |  |
-| `domain` | `string` |  |
-| `email` | `string` |  |
-| `employee_count` | `number` |  |
-| `founded_year` | `number` |  |
-| `industry` | `string` |  |
+| `company_id` | `string` | Unique identifier for the company |
+| `description` | `string` | Company description |
+| `domain` | `string` | Company website domain |
+| `email` | `string` | Company contact email |
+| `employee_count` | `number` | Number of employees |
+| `founded_year` | `number` | Year the company was founded |
+| `industry` | `string` | Primary industry |
 | `location` | `Record<string, any>` |  |
-| `logo_url` | `string` |  |
-| `name` | `string` |  |
-| `phone` | `string` |  |
-| `revenue` | `string` |  |
+| `logo_url` | `string` | URL to company logo |
+| `name` | `string` | Company name |
+| `phone` | `string` | Company phone number |
+| `revenue` | `string` | Estimated revenue range |
 | `social_profiles` | `Record<string, any>` |  |
-| `technologies` | `any[]` |  |
+| `technologies` | `any[]` | List of technologies used by the company |
 
 #### Example: Load
 
@@ -407,7 +407,7 @@ Create an instance: `const company_search = client.CompanySearch()`
 | `domain` | `string` |  |
 | `employee_count` | `number` |  |
 | `industry` | `string` |  |
-| `location` | `string` |  |
+| `location` | `string` | Location summary |
 | `logo_url` | `string` |  |
 | `name` | `string` |  |
 
@@ -439,7 +439,7 @@ Create an instance: `const similar = client.Similar()`
 | `location` | `string` |  |
 | `logo_url` | `string` |  |
 | `name` | `string` |  |
-| `similarity_score` | `number` |  |
+| `similarity_score` | `number` | Similarity score (0-1) |
 
 #### Example: List
 

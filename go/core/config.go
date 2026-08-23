@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "CompanyEnrich",
+			"slug": "company-enrich",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -38,30 +41,37 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "company_id",
+						"short": "Unique identifier for the company",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Company description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "domain",
+						"short": "Company website domain",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "email",
+						"short": "Company contact email",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "employee_count",
+						"short": "Number of employees",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "founded_year",
+						"short": "Year the company was founded",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "industry",
+						"short": "Primary industry",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -70,18 +80,22 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "logo_url",
+						"short": "URL to company logo",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Company name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "phone",
+						"short": "Company phone number",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "revenue",
+						"short": "Estimated revenue range",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -90,6 +104,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "technologies",
+						"short": "List of technologies used by the company",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -170,6 +185,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "location",
+						"short": "Location summary",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -303,6 +319,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "similarity_score",
+						"short": "Similarity score (0-1)",
 						"type": "`$NUMBER`",
 					},
 				},

@@ -28,6 +28,7 @@ main: kit: entity: company_search: {
     {
       name: "location"
       req: false
+      short: "Location summary"
       type: "`$STRING`"
     }
     {

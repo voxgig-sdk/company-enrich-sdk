@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "CompanyEnrich",
+            "slug": "company-enrich",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -55,30 +58,37 @@ def make_config():
         "fields": [
           {
             "name": "company_id",
+            "short": "Unique identifier for the company",
             "type": "`$STRING`",
           },
           {
             "name": "description",
+            "short": "Company description",
             "type": "`$STRING`",
           },
           {
             "name": "domain",
+            "short": "Company website domain",
             "type": "`$STRING`",
           },
           {
             "name": "email",
+            "short": "Company contact email",
             "type": "`$STRING`",
           },
           {
             "name": "employee_count",
+            "short": "Number of employees",
             "type": "`$INTEGER`",
           },
           {
             "name": "founded_year",
+            "short": "Year the company was founded",
             "type": "`$INTEGER`",
           },
           {
             "name": "industry",
+            "short": "Primary industry",
             "type": "`$STRING`",
           },
           {
@@ -87,18 +97,22 @@ def make_config():
           },
           {
             "name": "logo_url",
+            "short": "URL to company logo",
             "type": "`$STRING`",
           },
           {
             "name": "name",
+            "short": "Company name",
             "type": "`$STRING`",
           },
           {
             "name": "phone",
+            "short": "Company phone number",
             "type": "`$STRING`",
           },
           {
             "name": "revenue",
+            "short": "Estimated revenue range",
             "type": "`$STRING`",
           },
           {
@@ -107,6 +121,7 @@ def make_config():
           },
           {
             "name": "technologies",
+            "short": "List of technologies used by the company",
             "type": "`$ARRAY`",
           },
         ],
@@ -187,6 +202,7 @@ def make_config():
           },
           {
             "name": "location",
+            "short": "Location summary",
             "type": "`$STRING`",
           },
           {
@@ -320,6 +336,7 @@ def make_config():
           },
           {
             "name": "similarity_score",
+            "short": "Similarity score (0-1)",
             "type": "`$NUMBER`",
           },
         ],

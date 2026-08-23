@@ -36,42 +36,49 @@
               "active": true,
               "name": "company_id",
               "req": false,
+              "short": "Unique identifier for the company",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Company description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "domain",
               "req": false,
+              "short": "Company website domain",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "email",
               "req": false,
+              "short": "Company contact email",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "employee_count",
               "req": false,
+              "short": "Number of employees",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "founded_year",
               "req": false,
+              "short": "Year the company was founded",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "industry",
               "req": false,
+              "short": "Primary industry",
               "type": "`$STRING`"
             },
             {
@@ -84,24 +91,28 @@
               "active": true,
               "name": "logo_url",
               "req": false,
+              "short": "URL to company logo",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Company name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "phone",
               "req": false,
+              "short": "Company phone number",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "revenue",
               "req": false,
+              "short": "Estimated revenue range",
               "type": "`$STRING`"
             },
             {
@@ -114,6 +125,7 @@
               "active": true,
               "name": "technologies",
               "req": false,
+              "short": "List of technologies used by the company",
               "type": "`$ARRAY`"
             }
           ],
@@ -215,6 +227,7 @@
               "active": true,
               "name": "location",
               "req": false,
+              "short": "Location summary",
               "type": "`$STRING`"
             },
             {
@@ -387,6 +400,7 @@
               "active": true,
               "name": "similarity_score",
               "req": false,
+              "short": "Similarity score (0-1)",
               "type": "`$NUMBER`"
             }
           ],
