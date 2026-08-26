@@ -28,6 +28,7 @@ module CompanyEnrichConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
