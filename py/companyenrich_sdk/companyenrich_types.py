@@ -35,19 +35,8 @@ class CompanyEnrichment(TypedDict, total=False):
 
 class CompanyEnrichmentLoadMatch(TypedDict, total=False):
     company_id: str
-    description: str
     domain: str
-    email: str
-    employee_count: int
-    founded_year: int
-    industry: str
-    location: dict
-    logo_url: str
     name: str
-    phone: str
-    revenue: str
-    social_profiles: dict
-    technologies: list
 
 
 class CompanySearch(TypedDict, total=False):
@@ -61,13 +50,13 @@ class CompanySearch(TypedDict, total=False):
 
 
 class CompanySearchListMatch(TypedDict, total=False):
-    company_id: str
-    domain: str
-    employee_count: int
+    employee_count_max: int
+    employee_count_min: int
     industry: str
+    limit: int
     location: str
-    logo_url: str
-    name: str
+    offset: int
+    query: str
 
 
 class Similar(TypedDict, total=False):
@@ -84,9 +73,4 @@ class Similar(TypedDict, total=False):
 class SimilarListMatch(TypedDict, total=False):
     company_id: str
     domain: str
-    employee_count: int
-    industry: str
-    location: str
-    logo_url: str
-    name: str
-    similarity_score: float
+    limit: int

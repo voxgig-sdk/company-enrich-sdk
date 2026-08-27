@@ -35,19 +35,8 @@ class CompanyEnrichment
 class CompanyEnrichmentLoadMatch
 {
     public ?string $company_id = null;
-    public ?string $description = null;
     public ?string $domain = null;
-    public ?string $email = null;
-    public ?int $employee_count = null;
-    public ?int $founded_year = null;
-    public ?string $industry = null;
-    public ?array $location = null;
-    public ?string $logo_url = null;
     public ?string $name = null;
-    public ?string $phone = null;
-    public ?string $revenue = null;
-    public ?array $social_profiles = null;
-    public ?array $technologies = null;
 }
 
 /** CompanySearch entity data model. */
@@ -65,13 +54,13 @@ class CompanySearch
 /** Request payload for CompanySearch#list. */
 class CompanySearchListMatch
 {
-    public ?string $company_id = null;
-    public ?string $domain = null;
-    public ?int $employee_count = null;
+    public ?int $employee_count_max = null;
+    public ?int $employee_count_min = null;
     public ?string $industry = null;
+    public ?int $limit = null;
     public ?string $location = null;
-    public ?string $logo_url = null;
-    public ?string $name = null;
+    public ?int $offset = null;
+    public ?string $query = null;
 }
 
 /** Similar entity data model. */
@@ -92,11 +81,6 @@ class SimilarListMatch
 {
     public ?string $company_id = null;
     public ?string $domain = null;
-    public ?int $employee_count = null;
-    public ?string $industry = null;
-    public ?string $location = null;
-    public ?string $logo_url = null;
-    public ?string $name = null;
-    public ?float $similarity_score = null;
+    public ?int $limit = null;
 }
 

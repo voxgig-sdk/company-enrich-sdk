@@ -74,59 +74,15 @@ CompanyEnrichment = Struct.new(
 # @!attribute [rw] company_id
 #   @return [String, nil]
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
 # @!attribute [rw] domain
-#   @return [String, nil]
-#
-# @!attribute [rw] email
-#   @return [String, nil]
-#
-# @!attribute [rw] employee_count
-#   @return [Integer, nil]
-#
-# @!attribute [rw] founded_year
-#   @return [Integer, nil]
-#
-# @!attribute [rw] industry
-#   @return [String, nil]
-#
-# @!attribute [rw] location
-#   @return [Hash, nil]
-#
-# @!attribute [rw] logo_url
 #   @return [String, nil]
 #
 # @!attribute [rw] name
 #   @return [String, nil]
-#
-# @!attribute [rw] phone
-#   @return [String, nil]
-#
-# @!attribute [rw] revenue
-#   @return [String, nil]
-#
-# @!attribute [rw] social_profiles
-#   @return [Hash, nil]
-#
-# @!attribute [rw] technologies
-#   @return [Array, nil]
 CompanyEnrichmentLoadMatch = Struct.new(
   :company_id,
-  :description,
   :domain,
-  :email,
-  :employee_count,
-  :founded_year,
-  :industry,
-  :location,
-  :logo_url,
   :name,
-  :phone,
-  :revenue,
-  :social_profiles,
-  :technologies,
   keyword_init: true
 )
 
@@ -165,34 +121,34 @@ CompanySearch = Struct.new(
 
 # Request payload for CompanySearch#list.
 #
-# @!attribute [rw] company_id
-#   @return [String, nil]
+# @!attribute [rw] employee_count_max
+#   @return [Integer, nil]
 #
-# @!attribute [rw] domain
-#   @return [String, nil]
-#
-# @!attribute [rw] employee_count
+# @!attribute [rw] employee_count_min
 #   @return [Integer, nil]
 #
 # @!attribute [rw] industry
 #   @return [String, nil]
 #
+# @!attribute [rw] limit
+#   @return [Integer, nil]
+#
 # @!attribute [rw] location
 #   @return [String, nil]
 #
-# @!attribute [rw] logo_url
-#   @return [String, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] query
 #   @return [String, nil]
 CompanySearchListMatch = Struct.new(
-  :company_id,
-  :domain,
-  :employee_count,
+  :employee_count_max,
+  :employee_count_min,
   :industry,
+  :limit,
   :location,
-  :logo_url,
-  :name,
+  :offset,
+  :query,
   keyword_init: true
 )
 
@@ -241,32 +197,12 @@ Similar = Struct.new(
 # @!attribute [rw] domain
 #   @return [String, nil]
 #
-# @!attribute [rw] employee_count
+# @!attribute [rw] limit
 #   @return [Integer, nil]
-#
-# @!attribute [rw] industry
-#   @return [String, nil]
-#
-# @!attribute [rw] location
-#   @return [String, nil]
-#
-# @!attribute [rw] logo_url
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] similarity_score
-#   @return [Float, nil]
 SimilarListMatch = Struct.new(
   :company_id,
   :domain,
-  :employee_count,
-  :industry,
-  :location,
-  :logo_url,
-  :name,
-  :similarity_score,
+  :limit,
   keyword_init: true
 )
 

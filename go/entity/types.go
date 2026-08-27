@@ -33,19 +33,8 @@ type CompanyEnrichment struct {
 // CompanyEnrichmentLoadMatch is the typed request payload for CompanyEnrichment.LoadTyped.
 type CompanyEnrichmentLoadMatch struct {
 	CompanyId *string `json:"company_id,omitempty"`
-	Description *string `json:"description,omitempty"`
 	Domain *string `json:"domain,omitempty"`
-	Email *string `json:"email,omitempty"`
-	EmployeeCount *int `json:"employee_count,omitempty"`
-	FoundedYear *int `json:"founded_year,omitempty"`
-	Industry *string `json:"industry,omitempty"`
-	Location *map[string]any `json:"location,omitempty"`
-	LogoUrl *string `json:"logo_url,omitempty"`
 	Name *string `json:"name,omitempty"`
-	Phone *string `json:"phone,omitempty"`
-	Revenue *string `json:"revenue,omitempty"`
-	SocialProfiles *map[string]any `json:"social_profiles,omitempty"`
-	Technologies *[]any `json:"technologies,omitempty"`
 }
 
 // CompanySearch is the typed data model for the company_search entity.
@@ -61,13 +50,13 @@ type CompanySearch struct {
 
 // CompanySearchListMatch is the typed request payload for CompanySearch.ListTyped.
 type CompanySearchListMatch struct {
-	CompanyId *string `json:"company_id,omitempty"`
-	Domain *string `json:"domain,omitempty"`
-	EmployeeCount *int `json:"employee_count,omitempty"`
+	EmployeeCountMax *int `json:"employee_count_max,omitempty"`
+	EmployeeCountMin *int `json:"employee_count_min,omitempty"`
 	Industry *string `json:"industry,omitempty"`
+	Limit *int `json:"limit,omitempty"`
 	Location *string `json:"location,omitempty"`
-	LogoUrl *string `json:"logo_url,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Offset *int `json:"offset,omitempty"`
+	Query *string `json:"query,omitempty"`
 }
 
 // Similar is the typed data model for the similar entity.
@@ -86,12 +75,7 @@ type Similar struct {
 type SimilarListMatch struct {
 	CompanyId *string `json:"company_id,omitempty"`
 	Domain *string `json:"domain,omitempty"`
-	EmployeeCount *int `json:"employee_count,omitempty"`
-	Industry *string `json:"industry,omitempty"`
-	Location *string `json:"location,omitempty"`
-	LogoUrl *string `json:"logo_url,omitempty"`
-	Name *string `json:"name,omitempty"`
-	SimilarityScore *float64 `json:"similarity_score,omitempty"`
+	Limit *int `json:"limit,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

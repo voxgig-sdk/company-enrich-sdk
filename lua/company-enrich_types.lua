@@ -24,19 +24,8 @@
 
 ---@class CompanyEnrichmentLoadMatch
 ---@field company_id? string
----@field description? string
 ---@field domain? string
----@field email? string
----@field employee_count? number
----@field founded_year? number
----@field industry? string
----@field location? table
----@field logo_url? string
 ---@field name? string
----@field phone? string
----@field revenue? string
----@field social_profiles? table
----@field technologies? table
 
 ---@class CompanySearch
 ---@field company_id? string
@@ -48,13 +37,13 @@
 ---@field name? string
 
 ---@class CompanySearchListMatch
----@field company_id? string
----@field domain? string
----@field employee_count? number
+---@field employee_count_max? number
+---@field employee_count_min? number
 ---@field industry? string
+---@field limit? number
 ---@field location? string
----@field logo_url? string
----@field name? string
+---@field offset? number
+---@field query? string
 
 ---@class Similar
 ---@field company_id? string
@@ -69,12 +58,7 @@
 ---@class SimilarListMatch
 ---@field company_id? string
 ---@field domain? string
----@field employee_count? number
----@field industry? string
----@field location? string
----@field logo_url? string
----@field name? string
----@field similarity_score? number
+---@field limit? number
 
 local M = {}
 
