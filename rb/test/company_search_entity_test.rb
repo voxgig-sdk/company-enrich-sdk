@@ -118,7 +118,7 @@ def company_search_basic_setup(extra)
     "COMPANY_ENRICH_TEST_COMPANY_SEARCH_ENTID" => idmap,
     "COMPANY_ENRICH_TEST_LIVE" => "FALSE",
     "COMPANY_ENRICH_TEST_EXPLAIN" => "FALSE",
-    "COMPANY_ENRICH_APIKEY" => "NONE",
+    "COMPANY_ENRICH_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -129,6 +129,9 @@ def company_search_basic_setup(extra)
 
   if env["COMPANY_ENRICH_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["COMPANY_ENRICH_APIKEY"],
       },

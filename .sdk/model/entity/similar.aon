@@ -41,6 +41,7 @@ main: kit: entity: similar: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "similarity_score"
       req: false
       short: "Similarity score (0-1)"
@@ -83,9 +84,13 @@ main: kit: entity: similar: {
           }
           method: "GET"
           orig: "/v1/similar"
-          parts: [
-            "v1"
-            "similar"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "similar"
+            }
           ]
           select: {
             exist: [

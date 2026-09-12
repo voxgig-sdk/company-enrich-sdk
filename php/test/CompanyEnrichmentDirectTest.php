@@ -67,15 +67,17 @@ function company_enrichment_direct_setup($mockres)
     $env = Runner::env_override([
         "COMPANY_ENRICH_TEST_COMPANY_ENRICHMENT_ENTID" => [],
         "COMPANY_ENRICH_TEST_LIVE" => "FALSE",
-        "COMPANY_ENRICH_APIKEY" => "NONE",
+        "COMPANY_ENRICH_APIKEY" => "",
     ]);
 
     $live = $env["COMPANY_ENRICH_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["COMPANY_ENRICH_APIKEY"],
-        ];
+        ]);
         $client = new CompanyEnrichSDK($merged_opts);
         return [
             "client" => $client,

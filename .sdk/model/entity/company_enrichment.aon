@@ -124,9 +124,13 @@ main: kit: entity: company_enrichment: {
           }
           method: "GET"
           orig: "/v1/enrich"
-          parts: [
-            "v1"
-            "enrich"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "enrich"
+            }
           ]
           select: {
             exist: [

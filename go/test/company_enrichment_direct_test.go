@@ -100,14 +100,22 @@ func company_enrichmentDirectSetup(mockres any) *company_enrichmentDirectSetupRe
 	env := envOverride(map[string]any{
 		"COMPANY_ENRICH_TEST_COMPANY_ENRICHMENT_ENTID": map[string]any{},
 		"COMPANY_ENRICH_TEST_LIVE":    "FALSE",
-		"COMPANY_ENRICH_APIKEY":       "NONE",
+		"COMPANY_ENRICH_APIKEY":       "",
 	})
 
 	live := env["COMPANY_ENRICH_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["COMPANY_ENRICH_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewCompanyEnrichSDK(mergedOpts)
 

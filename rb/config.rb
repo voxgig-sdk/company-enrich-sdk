@@ -151,9 +151,13 @@ module CompanyEnrichConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/enrich",
-                  "parts" => [
-                    "v1",
-                    "enrich",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "enrich",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -166,6 +170,10 @@ module CompanyEnrichConfig
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "v1",
+                    "enrich",
+                  ],
                 },
               ],
             },
@@ -269,9 +277,13 @@ module CompanyEnrichConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/search",
-                  "parts" => [
-                    "v1",
-                    "search",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "search",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -288,6 +300,10 @@ module CompanyEnrichConfig
                     "req" => "`reqdata`",
                     "res" => "`body.data`",
                   },
+                  "parts" => [
+                    "v1",
+                    "search",
+                  ],
                 },
               ],
             },
@@ -327,6 +343,7 @@ module CompanyEnrichConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "similarity_score",
               "short" => "Similarity score (0-1)",
               "type" => "`$NUMBER`",
@@ -366,9 +383,13 @@ module CompanyEnrichConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/v1/similar",
-                  "parts" => [
-                    "v1",
-                    "similar",
+                  "segments" => [
+                    {
+                      "lit" => "v1",
+                    },
+                    {
+                      "lit" => "similar",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -381,6 +402,10 @@ module CompanyEnrichConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "v1",
+                    "similar",
+                  ],
                 },
               ],
             },

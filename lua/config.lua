@@ -139,9 +139,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/v1/enrich",
-                ["parts"] = {
-                  "v1",
-                  "enrich",
+                ["segments"] = {
+                  {
+                    ["lit"] = "v1",
+                  },
+                  {
+                    ["lit"] = "enrich",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -153,6 +157,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "v1",
+                  "enrich",
                 },
               },
             },
@@ -257,9 +265,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/v1/search",
-                ["parts"] = {
-                  "v1",
-                  "search",
+                ["segments"] = {
+                  {
+                    ["lit"] = "v1",
+                  },
+                  {
+                    ["lit"] = "search",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -275,6 +287,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.data`",
+                },
+                ["parts"] = {
+                  "v1",
+                  "search",
                 },
               },
             },
@@ -315,6 +331,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "similarity_score",
             ["short"] = "Similarity score (0-1)",
             ["type"] = "`$NUMBER`",
@@ -354,9 +371,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/v1/similar",
-                ["parts"] = {
-                  "v1",
-                  "similar",
+                ["segments"] = {
+                  {
+                    ["lit"] = "v1",
+                  },
+                  {
+                    ["lit"] = "similar",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -368,6 +389,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "v1",
+                  "similar",
                 },
               },
             },

@@ -98,7 +98,7 @@ func TestSimilarEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		similarRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.similar", setup.data)))
+		similarRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.similar")))
 		var similarRef01Data map[string]any
 		if len(similarRef01DataRaw) > 0 {
 			similarRef01Data = core.ToMapAny(similarRef01DataRaw[0][1])
@@ -147,7 +147,7 @@ func similarBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"similar01", "similar02", "similar03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -167,7 +167,7 @@ func similarBasicSetup(extra map[string]any) *entityTestSetup {
 		"COMPANY_ENRICH_TEST_SIMILAR_ENTID": idmap,
 		"COMPANY_ENRICH_TEST_LIVE":      "FALSE",
 		"COMPANY_ENRICH_TEST_EXPLAIN":   "FALSE",
-		"COMPANY_ENRICH_APIKEY":         "NONE",
+		"COMPANY_ENRICH_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["COMPANY_ENRICH_TEST_SIMILAR_ENTID"])
@@ -176,11 +176,23 @@ func similarBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["COMPANY_ENRICH_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["COMPANY_ENRICH_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCompanyEnrichSDK(core.ToMapAny(mergedOpts))
 	}

@@ -111,9 +111,13 @@ main: kit: entity: company_search: {
           }
           method: "GET"
           orig: "/v1/search"
-          parts: [
-            "v1"
-            "search"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "search"
+            }
           ]
           select: {
             exist: [

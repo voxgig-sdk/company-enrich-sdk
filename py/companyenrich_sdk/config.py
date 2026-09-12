@@ -1,6 +1,14 @@
 # CompanyEnrich SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -160,9 +168,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/v1/enrich",
-                "parts": [
-                  "v1",
-                  "enrich",
+                "segments": [
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "enrich",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -175,6 +187,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "v1",
+                  "enrich",
+                ],
               },
             ],
           },
@@ -278,9 +294,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/v1/search",
-                "parts": [
-                  "v1",
-                  "search",
+                "segments": [
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "search",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -297,6 +317,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.data`",
                 },
+                "parts": [
+                  "v1",
+                  "search",
+                ],
               },
             ],
           },
@@ -336,6 +360,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "similarity_score",
             "short": "Similarity score (0-1)",
             "type": "`$NUMBER`",
@@ -375,9 +400,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/v1/similar",
-                "parts": [
-                  "v1",
-                  "similar",
+                "segments": [
+                  {
+                    "lit": "v1",
+                  },
+                  {
+                    "lit": "similar",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -390,6 +419,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "v1",
+                  "similar",
+                ],
               },
             ],
           },

@@ -124,7 +124,7 @@ function similar_basic_setup($extra)
         "COMPANY_ENRICH_TEST_SIMILAR_ENTID" => $idmap,
         "COMPANY_ENRICH_TEST_LIVE" => "FALSE",
         "COMPANY_ENRICH_TEST_EXPLAIN" => "FALSE",
-        "COMPANY_ENRICH_APIKEY" => "NONE",
+        "COMPANY_ENRICH_APIKEY" => "",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -135,10 +135,17 @@ function similar_basic_setup($extra)
 
     if ($env["COMPANY_ENRICH_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
+            // FIRST, so the generated fields below win: sdk-test-control.json's
+            // test.client.options adds to the live client, it does not redirect it.
+            Runner::live_client_options(),
             [
                 "apikey" => $env["COMPANY_ENRICH_APIKEY"],
             ],
-            $extra ?? [],
+            // ismap, not a plain "?? []" default: an empty PHP array is a
+            // LIST, and a non-map later entry REPLACES the accumulated map in
+            // merge - so the no-extras call discarded live_client_options()
+            // and the apikey/server map above it.
+            Vs::ismap($extra) ? $extra : new \stdClass(),
         ]);
         $client = new CompanyEnrichSDK(Helpers::to_map($merged_opts));
     }

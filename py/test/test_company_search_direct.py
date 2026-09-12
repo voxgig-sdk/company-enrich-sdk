@@ -60,15 +60,18 @@ def _company_search_direct_setup(mockres):
     env = runner.env_override({
         "COMPANY_ENRICH_TEST_COMPANY_SEARCH_ENTID": {},
         "COMPANY_ENRICH_TEST_LIVE": "FALSE",
-        "COMPANY_ENRICH_APIKEY": "NONE",
+        "COMPANY_ENRICH_APIKEY": "",
     })
 
     live = env.get("COMPANY_ENRICH_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("COMPANY_ENRICH_APIKEY"),
-        }
+        })
         client = CompanyEnrichSDK(merged_opts)
         return {
             "client": client,
