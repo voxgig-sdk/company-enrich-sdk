@@ -105,7 +105,7 @@ local results, err = client:CompanySearch():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/company-enrich` | publish pending — [install from git tag](https://github.com/voxgig-sdk/company-enrich-sdk/releases) |
+| TypeScript | `@voxgig-sdk/company-enrich-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/company-enrich-sdk/releases) |
 | Python | `voxgig-sdk-company-enrich` | publish pending — [install from git tag](https://github.com/voxgig-sdk/company-enrich-sdk/releases) |
 | PHP | `voxgig-sdk/company-enrich` | publish pending — [install from git tag](https://github.com/voxgig-sdk/company-enrich-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/company-enrich-sdk/go` | `go get github.com/voxgig-sdk/company-enrich-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:CompanySearch():list()
 ### TypeScript
 
 ```ts
-import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich'
+import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich-sdk'
 
 const client = new CompanyEnrichSDK({
   apikey: process.env.COMPANY_ENRICH_APIKEY,

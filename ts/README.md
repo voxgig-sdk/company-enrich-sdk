@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich'
+import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich-sdk'
 
 const client = new CompanyEnrichSDK({
   apikey: process.env.COMPANY_ENRICH_APIKEY,
@@ -530,7 +530,7 @@ company-enrich/
 Import the SDK from the package root:
 
 ```ts
-import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich'
+import { CompanyEnrichSDK } from '@voxgig-sdk/company-enrich-sdk'
 ```
 
 ### Entity state
